@@ -2,8 +2,7 @@
 
 import { useState } from "react";
 import { usePathname } from "next/navigation";
-import Logo from "./logo";
-import { Navbar, NavbarBrand, NavbarMenuToggle, NavbarMenuItem, NavbarMenu, NavbarContent, NavbarItem, Button, DropdownItem, DropdownTrigger, Dropdown, DropdownMenu, Avatar, Input, Popover, PopoverTrigger, PopoverContent } from "@nextui-org/react";
+import { Navbar, NavbarBrand, NavbarMenuToggle, NavbarMenuItem, NavbarMenu, NavbarContent, NavbarItem, Button, DropdownItem, DropdownTrigger, Dropdown, DropdownMenu, Avatar, Popover, PopoverTrigger, PopoverContent, Divider } from "@nextui-org/react";
 import { BsChevronDown } from "react-icons/bs";
 import { LuScaling } from "react-icons/lu";
 import { FaAvianex, FaChartPie, FaFulcrum, FaJedi } from "react-icons/fa";
@@ -11,6 +10,8 @@ import Link from "next/link";
 import { MenuItems } from "../utils/menuItems";
 import { ThemeSwitcher } from "./themeSwitcher";
 import { useRouter } from 'next/navigation'
+import { BraneLogo } from "./braneLogo";
+import { RiArrowDownSLine } from "react-icons/ri";
 
 const AppNavBar = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -46,9 +47,12 @@ const AppNavBar = () => {
 
             <NavbarContent justify="center">
                 <NavbarBrand>
-                    <Logo />
+                    <BraneLogo width={180}/>
                 </NavbarBrand>
+                <Divider orientation="vertical"/>
             </NavbarContent>
+            
+
 
             <NavbarContent className="hidden md:flex gap-10" justify="center">
                 <Dropdown>
@@ -135,15 +139,18 @@ const AppNavBar = () => {
                 </Popover>
                 <Dropdown placement="bottom-end">
                     <DropdownTrigger>
-                        <Avatar
-                            isBordered
-                            as="button"
-                            className="transition-transform"
-                            color="secondary"
-                            name="Jason Hughes"
-                            size="sm"
-                            src="https://i.pravatar.cc/150?u=a042581f4e29026704d"
-                        />
+                        <div className="flex items-center gap-1 bg-foreground text-background px-1 rounded-full">
+                            <Avatar
+                                as="button"
+                                className="transition-transform w-6 h-6 text-tiny"
+                                color="secondary"
+                                name="Jason Hughes"
+                                size="sm"
+                                src="https://i.pravatar.cc/150?u=a042581f4e29026704d"
+                            />
+                            <div className="p-1">Hi, Name</div>
+                            <RiArrowDownSLine />
+                        </div>
                     </DropdownTrigger>
                     <DropdownMenu aria-label="Profile Actions" variant="flat">
                         <DropdownItem key="profile" className="h-14 gap-2">

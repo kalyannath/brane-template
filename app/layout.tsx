@@ -5,6 +5,7 @@ import { NextUIProvider } from "@nextui-org/react";
 import AppNavBar from "./components/navbar";
 import { NextUIProv } from "./providers/NextUIProv";
 import { ThemeSwitcher } from "./components/themeSwitcher";
+import Sidebar from "./components/sidebar";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -27,11 +28,11 @@ export default function RootLayout({
             <div className="app-nav-bar-container">
               <AppNavBar />
             </div>
-            <div className="flex-1 overflow-y-auto overflow-x-hidden flex justify-center items-center">
-              <div className="side-nav-bar">
-
+            <div className="bg-bodyBackground flex-1 overflow-y-auto overflow-x-hidden flex justify-center items-center px-1 py-5">
+              <div className="side-nav-bar h-full">
+                <Sidebar />
               </div>
-              <div>
+              <div className="flex-1">
                 {children}
               </div>
             </div>

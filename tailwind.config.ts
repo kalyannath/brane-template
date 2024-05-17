@@ -26,6 +26,8 @@ const config: Config = {
           colors: {
             background: "#0D001A",
             foreground: "#ffffff",
+            bodyBackground: "#0E051A",
+            activeItemBackground: "#AC95D1",
             primary: {
               50: "#3B096C",
               100: "#520F83",
@@ -49,6 +51,15 @@ const config: Config = {
               medium: "2px",
               large: "3px",
             },
+          },
+        },
+
+        "light": {
+          extend: "light", // <- inherit default values from dark theme
+          colors: {
+            foreground: "#35008B",
+            bodyBackground: "#F5FBFF",
+            activeItemBackground: "#AC95D1",
           },
         },
       },
