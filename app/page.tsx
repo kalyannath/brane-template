@@ -1,7 +1,7 @@
-import AppHome from "./components/home";
+import Dashboard from "./dashboard/home";
 
 export default function Home() {
   return (
-    <AppHome />
+    <Dashboard />
   );
 }

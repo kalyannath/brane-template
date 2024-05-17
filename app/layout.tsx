@@ -28,11 +28,11 @@ export default function RootLayout({
             <div className="app-nav-bar-container">
               <AppNavBar />
             </div>
-            <div className="bg-bodyBackground flex-1 overflow-y-auto overflow-x-hidden flex justify-center items-center px-1 py-5">
-              <div className="side-nav-bar h-full">
+            <div className="bg-bodyBackground flex-1 overflow-y-auto overflow-x-hidden flex justify-center items-center px-1 py-5 gap-5">
+              <div className="hidden sm:block side-nav-bar h-full">
                 <Sidebar />
               </div>
-              <div className="flex-1">
+              <div className="flex-1 h-full">
                 {children}
               </div>
             </div>

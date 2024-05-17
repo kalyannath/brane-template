@@ -12,6 +12,8 @@ import { ThemeSwitcher } from "./themeSwitcher";
 import { useRouter } from 'next/navigation'
 import { BraneLogo } from "./braneLogo";
 import { RiArrowDownSLine } from "react-icons/ri";
+import { BraneLogoText } from "./braneLogoText";
+import Sidebar from "./sidebar";
 
 const AppNavBar = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -47,85 +49,18 @@ const AppNavBar = () => {
 
             <NavbarContent justify="center">
                 <NavbarBrand>
-                    <BraneLogo width={180}/>
+                    <BraneLogo width={30} height={30}/>
+                    <span className="hidden md:block">
+                        <BraneLogoText width={100} height={50}/>
+                    </span>
                 </NavbarBrand>
                 <Divider orientation="vertical"/>
             </NavbarContent>
             
 
 
-            <NavbarContent className="hidden md:flex gap-10" justify="center">
-                <Dropdown>
-                    <DropdownTrigger>
-                        <Button
-                            disableRipple
-                            className="p-0 bg-transparent data-[hover=true]:bg-transparent"
-                            radius="sm"
-                            variant="light"
-                            endContent={<BsChevronDown />}
-                        >
-                            Features
-                        </Button>
-                    </DropdownTrigger>
-                    <DropdownMenu
-                        aria-label="ACME features"
-                        className="w-[340px]"
-                        itemClasses={{
-                            base: "gap-4",
-                        }}
-                    >
-                        <DropdownItem
-                            key="autoscaling"
-                            description="ACME scales apps to meet user demand, automagically, based on load."
-                            startContent={<LuScaling size={30} color="green" />}
-                        >
-                            Autoscaling
-                        </DropdownItem>
-                        <DropdownItem
-                            key="usage_metrics"
-                            description="Real-time metrics to debug issues. Slow query added? We’ll show you exactly where."
-                            startContent={<FaChartPie size={30} color="red" />}
-                        >
-                            Usage Metrics
-                        </DropdownItem>
-                        <DropdownItem
-                            key="production_ready"
-                            description="ACME runs on ACME, join us and others serving requests at web scale."
-                            startContent={<FaAvianex size={30} color="purple" />}
-                        >
-                            Production Ready
-                        </DropdownItem>
-                        <DropdownItem
-                            key="99_uptime"
-                            description="Applications stay on the grid with high availability and high uptime guarantees."
-                            startContent={<FaFulcrum size={30} color="orange" />}
-                        >
-                            +99% Uptime
-                        </DropdownItem>
-                        <DropdownItem
-                            key="supreme_support"
-                            description="Overcome any challenge with a supporting team ready to respond."
-                            startContent={<FaJedi size={30} color="blue" />}
-                        >
-                            +Supreme Support
-                        </DropdownItem>
-                    </DropdownMenu>
-                </Dropdown>
-                <NavbarItem isActive={pathname === '/'}>
-                    <Link href="/">
-                        Home
-                    </Link>
-                </NavbarItem>
-                <NavbarItem isActive={pathname === '/route1'}>
-                    <Link href="/route1">
-                        Route 1
-                    </Link>
-                </NavbarItem>
-                <NavbarItem isActive={pathname === '/route2'}>
-                    <Link href="/route2">
-                        Route 2
-                    </Link>
-                </NavbarItem>
+            <NavbarContent className="font-bold" justify="center">
+                App name
             </NavbarContent>
 
             <NavbarContent as="div" justify="end">
@@ -139,7 +74,7 @@ const AppNavBar = () => {
                 </Popover>
                 <Dropdown placement="bottom-end">
                     <DropdownTrigger>
-                        <div className="flex items-center gap-1 bg-foreground text-background px-1 rounded-full">
+                        <div className="flex items-center gap-1 bg-foreground text-background p-1 rounded-full cursor-pointer">
                             <Avatar
                                 as="button"
                                 className="transition-transform w-6 h-6 text-tiny"
@@ -148,8 +83,8 @@ const AppNavBar = () => {
                                 size="sm"
                                 src="https://i.pravatar.cc/150?u=a042581f4e29026704d"
                             />
-                            <div className="p-1">Hi, Name</div>
-                            <RiArrowDownSLine />
+                            <div className="hidden md:block p-1">Hi, Name</div>
+                            <RiArrowDownSLine size={20} className="hidden sm:block p-1" />
                         </div>
                     </DropdownTrigger>
                     <DropdownMenu aria-label="Profile Actions" variant="flat">
@@ -171,16 +106,7 @@ const AppNavBar = () => {
             </NavbarContent>
 
             <NavbarMenu>
-                {MenuItems.map((item, index) => (
-                    <NavbarMenuItem key={`${item}-${index}`} isActive={pathname === `${item.route}`}>
-                        <Link
-                            className="w-full"
-                            href={item.route}
-                        >
-                            {item.title}
-                        </Link>
-                    </NavbarMenuItem>
-                ))}
+                <Sidebar />
             </NavbarMenu>
         </Navbar>
     )

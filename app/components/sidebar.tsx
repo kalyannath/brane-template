@@ -14,7 +14,7 @@ const Sidebar = () => {
     const pathName = usePathname();
     return (
         <div className="flex items-center flex-col gap-6 overflow-y-auto bg-foreground text-background h-full px-6 py-8 rounded-xl">
-            <Link href="/" className={`rounded-full p-2 ${pathName === "/" && "bg-activeItemBackground"}`}>
+            <Link href="/" className={`rounded-full p-3 ${pathName === "/" && "bg-activeItemBackground"}`}>
                 <IoHome size={25} />
             </Link>
             <Link href="/route1" className={`rounded-full p-2 ${pathName === "/route1" && "bg-activeItemBackground"}`}>
