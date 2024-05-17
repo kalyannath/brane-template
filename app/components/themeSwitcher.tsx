@@ -18,7 +18,6 @@ export function ThemeSwitcher() {
   return (
     <div className="flex gap-5">
       <Button isIconOnly onClick={() => setTheme('light')} className={`bg-white border-2 border-blue-400`}></Button>
-      <Button isIconOnly onClick={() => setTheme('dark')} className="bg-black border-2 border-white"></Button>
       <Button isIconOnly onClick={() => setTheme('purple-dark')} className="bg-fuchsia-700 border-2 border-white"></Button>
     </div>
   )

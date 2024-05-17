@@ -5,7 +5,7 @@ export function NextUIProv({ children }: { children: React.ReactNode }) {
 
   return (
     <NextUIProvider>
-      <NextThemesProvider attribute="class" defaultTheme="dark" themes={["light", "dark", "purple-dark"]}>
+      <NextThemesProvider attribute="class" defaultTheme="purple-dark" themes={["light", "purple-dark"]}>
         {children}
       </NextThemesProvider>
     </NextUIProvider>

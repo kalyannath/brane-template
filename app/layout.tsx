@@ -23,12 +23,17 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${inter.className} text-foreground bg-background`}>
         <NextUIProv>
-          <main className="main-body">
+          <main className="h-screen w-screen flex flex-col box-border p-0 m-0">
             <div className="app-nav-bar-container">
               <AppNavBar />
             </div>
-            <div className="app-content-container">
-              {children}
+            <div className="flex-1 overflow-y-auto overflow-x-hidden flex justify-center items-center">
+              <div className="side-nav-bar">
+
+              </div>
+              <div>
+                {children}
+              </div>
             </div>
           </main>
         </NextUIProv>
