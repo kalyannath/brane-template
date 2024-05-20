@@ -1,77 +1,44 @@
 "use client"
 
 import { useState } from "react";
-import { usePathname } from "next/navigation";
-import { Navbar, NavbarBrand, NavbarMenuToggle, NavbarMenuItem, NavbarMenu, NavbarContent, NavbarItem, Button, DropdownItem, DropdownTrigger, Dropdown, DropdownMenu, Avatar, Popover, PopoverTrigger, PopoverContent, Divider } from "@nextui-org/react";
-import { BsChevronDown } from "react-icons/bs";
-import { LuScaling } from "react-icons/lu";
-import { FaAvianex, FaChartPie, FaFulcrum, FaJedi } from "react-icons/fa";
-import Link from "next/link";
-import { MenuItems } from "../utils/menuItems";
+import { Navbar, NavbarBrand, NavbarMenu, NavbarContent, Button, DropdownItem, DropdownTrigger, Dropdown, DropdownMenu, Avatar, Divider } from "@nextui-org/react";
 import { ThemeSwitcher } from "./themeSwitcher";
-import { useRouter } from 'next/navigation'
 import { BraneLogo } from "./braneLogo";
 import { RiArrowDownSLine } from "react-icons/ri";
 import { BraneLogoText } from "./braneLogoText";
 import Sidebar from "./sidebar";
+import { CiMenuBurger } from "react-icons/ci";
+import { TfiClose } from "react-icons/tfi";
 
 const AppNavBar = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
-
-    const pathname = usePathname();
-    const router = useRouter();
     return (
         <Navbar
-            classNames={{
-                item: [
-                    "flex",
-                    "relative",
-                    "h-full",
-                    "items-center",
-                    "data-[active=true]:after:content-['']",
-                    "data-[active=true]:after:absolute",
-                    "data-[active=true]:after:bottom-0",
-                    "data-[active=true]:after:left-0",
-                    "data-[active=true]:after:right-0",
-                    "data-[active=true]:after:h-[2px]",
-                    "data-[active=true]:after:rounded-[2px]",
-                    "data-[active=true]:after:bg-primary",
-                ],
-            }}
             isBordered
-            isMenuOpen={isMenuOpen}
-            onMenuOpenChange={setIsMenuOpen}
             maxWidth={'full'}
+            className="relative"
         >
-            <NavbarContent className="md:hidden" justify="center">
-                <NavbarMenuToggle aria-label={isMenuOpen ? "Close menu" : "Open menu"} />
+            <NavbarContent justify="center" className="sm:hidden">
+                <Button className="text-foreground" variant="light" isIconOnly onClick={() => { setIsMenuOpen(!isMenuOpen) }} >
+                    {!isMenuOpen ? <CiMenuBurger size={25} /> : <TfiClose size={20} />}
+                </Button>
             </NavbarContent>
 
             <NavbarContent justify="center">
                 <NavbarBrand>
-                    <BraneLogo width={30} height={30}/>
+                    <BraneLogo width={30} height={30} />
                     <span className="hidden md:block">
-                        <BraneLogoText width={100} height={50}/>
+                        <BraneLogoText width={100} height={50} />
                     </span>
                 </NavbarBrand>
-                <Divider orientation="vertical"/>
+                <Divider orientation="vertical" />
             </NavbarContent>
-            
-
 
             <NavbarContent className="font-bold" justify="center">
                 App name
             </NavbarContent>
 
             <NavbarContent as="div" justify="end">
-                <Popover placement="bottom" showArrow offset={10}>
-                    <PopoverTrigger>
-                        <Button color="primary">Themes</Button>
-                    </PopoverTrigger>
-                    <PopoverContent>
-                        <ThemeSwitcher />
-                    </PopoverContent>
-                </Popover>
                 <Dropdown placement="bottom-end">
                     <DropdownTrigger>
                         <div className="flex items-center gap-1 bg-foreground text-background p-1 rounded-full cursor-pointer">
@@ -103,11 +70,14 @@ const AppNavBar = () => {
                         </DropdownItem>
                     </DropdownMenu>
                 </Dropdown>
+                <ThemeSwitcher />
             </NavbarContent>
 
-            <NavbarMenu>
-                <Sidebar />
-            </NavbarMenu>
+            <div className={`transition-all duration-[500ms] h-screen absolute top-[4rem] ${!isMenuOpen ? "-left-80" : "left-0"} `}>
+                <div className="pl-2">
+                    <Sidebar />
+                </div>
+            </div>
         </Navbar>
     )
 }
