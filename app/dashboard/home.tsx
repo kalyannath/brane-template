@@ -7,58 +7,22 @@ const Dashboard = () => {
         <div className="flex gap-5">
             <div className="flex flex-col flex-1 gap-5">
                 <div className="flex gap-5">
-                    <div>
-                        <Card>
-                            <CardBody>
-                                <p>Company details</p>
-                            </CardBody>
-                        </Card>
-                    </div>
-                    <div>
-                        <Card>
-                            <CardBody>
-                                <p>Active projects</p>
-                            </CardBody>
-                        </Card>
-                    </div>
+                    <div>card1</div>
+                    <div>card2</div>
                 </div>
                 <div className="flex flex-col gap-2">
                     <div className="font-bold">Teams</div>
                     <div className="flex">
-                        <Card>
-                            <CardBody>
-                                <p>Card1</p>
-                            </CardBody>
-                        </Card>
-                        <Card>
-                            <CardBody>
-                                <p>Card2</p>
-                            </CardBody>
-                        </Card>
-                        <Card>
-                            <CardBody>
-                                <p>Card3</p>
-                            </CardBody>
-                        </Card>
+                        <div>card1</div>
+                        <div>card2</div>
+                        <div>card3</div>
                     </div>
                 </div>
             </div>
             <div className="flex flex-col">
-                <Card>
-                    <CardBody>
-                        <p>Card1</p>
-                    </CardBody>
-                </Card>
-                <Card>
-                    <CardBody>
-                        <p>Card2</p>
-                    </CardBody>
-                </Card>
-                <Card>
-                    <CardBody>
-                        <p>Card3</p>
-                    </CardBody>
-                </Card>
+                <div>card1</div>
+                <div>card2</div>
+                <div>card3</div>
             </div>
         </div>
     )

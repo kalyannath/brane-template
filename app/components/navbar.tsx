@@ -1,26 +1,29 @@
 "use client"
 
-import { useState } from "react";
-import { Navbar, NavbarBrand, NavbarMenu, NavbarContent, Button, DropdownItem, DropdownTrigger, Dropdown, DropdownMenu, Avatar, Divider } from "@nextui-org/react";
+import { Navbar, NavbarBrand, NavbarContent, Button, DropdownItem, DropdownTrigger, Dropdown, DropdownMenu, Avatar, Divider } from "@nextui-org/react";
 import { ThemeSwitcher } from "./themeSwitcher";
 import { BraneLogo } from "./braneLogo";
 import { RiArrowDownSLine } from "react-icons/ri";
 import { BraneLogoText } from "./braneLogoText";
-import Sidebar from "./sidebar";
 import { CiMenuBurger } from "react-icons/ci";
 import { TfiClose } from "react-icons/tfi";
+import { AppDispatch, RootState } from "../redux/store";
+import { useDispatch, useSelector } from "react-redux";
+import { toggle } from "../redux/features/sidedrawer-state-slice";
+
 
 const AppNavBar = () => {
-    const [isMenuOpen, setIsMenuOpen] = useState(false);
+    const drawerState = useSelector((state: RootState) => state.sideDrawerReducer.isOpen);
+    const dispatch = useDispatch<AppDispatch>();
+    
     return (
         <Navbar
             isBordered
             maxWidth={'full'}
-            className="relative"
         >
             <NavbarContent justify="center" className="sm:hidden">
-                <Button className="text-foreground" variant="light" isIconOnly onClick={() => { setIsMenuOpen(!isMenuOpen) }} >
-                    {!isMenuOpen ? <CiMenuBurger size={25} /> : <TfiClose size={20} />}
+                <Button className="text-foreground" variant="light" isIconOnly onClick={() => { dispatch(toggle()); }} >
+                    {!drawerState ? <CiMenuBurger size={25} /> : <TfiClose size={20} />}
                 </Button>
             </NavbarContent>
 
@@ -72,12 +75,6 @@ const AppNavBar = () => {
                 </Dropdown>
                 <ThemeSwitcher />
             </NavbarContent>
-
-            <div className={`transition-all duration-[500ms] h-screen absolute top-[4rem] ${!isMenuOpen ? "-left-80" : "left-0"} `}>
-                <div className="pl-2">
-                    <Sidebar />
-                </div>
-            </div>
         </Navbar>
     )
 }

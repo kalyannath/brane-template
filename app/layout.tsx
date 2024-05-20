@@ -1,11 +1,11 @@
+
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
-import { NextUIProvider } from "@nextui-org/react";
 import AppNavBar from "./components/navbar";
 import { NextUIProv } from "./providers/NextUIProv";
-import { ThemeSwitcher } from "./components/themeSwitcher";
 import Sidebar from "./components/sidebar";
+import ReduxProvider from "./redux/reduxProvider";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -24,19 +24,19 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${inter.className} text-foreground bg-background`}>
         <NextUIProv>
+          <ReduxProvider>
           <main className="h-screen w-screen flex flex-col box-border p-0 m-0">
             <div className="app-nav-bar-container">
               <AppNavBar />
             </div>
             <div className="bg-bodyBackground flex-1 overflow-y-auto overflow-x-hidden flex justify-center items-center px-1 py-5 gap-5">
-              <div className="hidden sm:block side-nav-bar h-full">
-                <Sidebar />
-              </div>
+              <Sidebar />
               <div className="flex-1 h-full">
                 {children}
               </div>
             </div>
           </main>
+          </ReduxProvider>
         </NextUIProv>
       </body>
     </html>
