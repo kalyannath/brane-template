@@ -25,6 +25,11 @@ const Sidebar = () => {
             }
         }, drawerState ? 300 : 0)
     }, [drawerState])
+
+    useEffect(() => {
+        dispatch(toggle());
+    }, [pathName])
+    
     return (
         <div className={`${drawerBackground} sm:bg-transparent transition-all duration-[500ms] absolute sm:static top-0 ${drawerState ? "left-0" : "-left-44"} h-full ${drawerState && "w-full"} sm:w-auto flex`}>
             <div className={`transition-all duration-[500ms] h-full px-1 py-5 pt-20 sm:px-0 sm:py-0`}>
