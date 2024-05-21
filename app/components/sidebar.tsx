@@ -26,18 +26,20 @@ const Sidebar = () => {
         }, drawerState ? 300 : 0)
     }, [drawerState])
     return (
-        <div className={`${drawerBackground} sm:bg-transparent transition-all duration-[500ms] absolute sm:static top-0 ${drawerState ? "left-0" : "-left-28"} h-full ${drawerState && "w-full"} sm:w-auto flex`}>
+        <div className={`${drawerBackground} sm:bg-transparent transition-all duration-[500ms] absolute sm:static top-0 ${drawerState ? "left-0" : "-left-44"} h-full ${drawerState && "w-full"} sm:w-auto flex`}>
             <div className={`transition-all duration-[500ms] h-full px-1 py-5 pt-20 sm:px-0 sm:py-0`}>
                 <div className="h-full bg-foreground text-background px-6 py-8 rounded-xl overflow-y-auto overflow-x-hidden flex items-center flex-col gap-6 ">
                     {Routes1.map((r, index) => (
-                        <Link key={index} href={r.route} className={`rounded-full text-sideBarIconsColor p-3 ${pathName === r.route && "bg-activeItemBackground "}`}>
+                        <Link key={index} href={r.route} className={`flex jusify-center items-center gap-2 rounded-full text-sideBarIconsColor p-3 ${pathName === r.route && "bg-activeItemBackground "}`}>
                             {r.icon}
+                            <p className="inline sm:hidden">{r.name}</p>
                         </Link>
                     ))}
                     <Divider className="bg-sideBarIconsColor" />
                     {Routes2.map((r, index) => (
-                        <Link key={index} href={r.route} className={`rounded-full text-sideBarIconsColor p-3 ${pathName === r.route && "bg-activeItemBackground "}`}>
+                        <Link key={index} href={r.route} className={`flex jusify-center items-center gap-2 rounded-full text-sideBarIconsColor p-3 ${pathName === r.route && "bg-activeItemBackground "}`}>
                             {r.icon}
+                            <p className="inline sm:hidden">{r.name}</p>
                         </Link>
                     ))}
                 </div>

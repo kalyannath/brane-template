@@ -6,29 +6,35 @@ import { PiBuildingApartment } from "react-icons/pi";
 export const Routes1 = [
     {
         route: "/",
-        icon: <IoHome size={25} />
+        icon: <IoHome size={25} />,
+        name: "Home"
     },
     {
         route: "/route1",
-        icon: <HiOutlineRectangleStack size={25} />
+        icon: <HiOutlineRectangleStack size={25} />,
+        name: "Route 1"
     },
     {
         route: "/route2",
-        icon: <HiOutlineWrench size={25} />
+        icon: <HiOutlineWrench size={25} />,
+        name: "Route 2"
     },
 ]
 
 export const Routes2 = [
     {
         route: "/route3",
-        icon: <PiBuildingApartment size={25} />
+        icon: <PiBuildingApartment size={25} />,
+        name: "Route 3"
     },
     {
         route: "/route4",
-        icon: <FaUsers size={25} />
+        icon: <FaUsers size={25} />,
+        name: "Route 4"
     },
     {
         route: "/route5",
-        icon: <IoPersonAdd size={25} />
+        icon: <IoPersonAdd size={25} />,
+        name: "Route 5"
     },
 ]
