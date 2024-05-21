@@ -7,6 +7,7 @@ import { NextUIProv } from "./providers/NextUIProv";
 import Sidebar from "./components/sidebar";
 import ReduxProvider from "./redux/reduxProvider";
 import RightSideBar from "./components/rightSideBar";
+import MainBody from "./components/mainBody";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -33,12 +34,8 @@ export default function RootLayout({
               <div className="bg-bodyBackground flex-1 w-full overflow-x-hidden overflow-y-hidden flex justify-center px-1 py-5 gap-5">
                 <Sidebar />
                 <div className="flex flex-1 px-2 lg:px-0 gap-5 flex-col lg:flex-row overflow-y-auto h-full">
-                  <div className="w-full lg:w-8/12 overflow-y-auto">
-                    {children}
-                  </div>
-                  <div className="w-full lg:w-4/12 overflow-y-auto">
-                    <RightSideBar />
-                  </div>
+                  <MainBody>{children}</MainBody>
+                  <RightSideBar />
                 </div>
               </div>
             </main>
