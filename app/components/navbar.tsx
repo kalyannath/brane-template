@@ -28,10 +28,10 @@ const AppNavBar = () => {
             </NavbarContent>
 
             <NavbarContent justify="center">
-                <NavbarBrand>
+                <NavbarBrand className="flex gap-2">
                     <BraneLogo width={30} height={30} />
                     <span className="hidden md:block">
-                        <BraneLogoText width={100} height={50} />
+                        <BraneLogoText width={120} height={50} />
                     </span>
                 </NavbarBrand>
                 <Divider orientation="vertical" />

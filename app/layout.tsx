@@ -31,7 +31,7 @@ export default function RootLayout({
             </div>
             <div className="bg-bodyBackground flex-1 overflow-y-auto overflow-x-hidden flex justify-center items-center px-1 py-5 gap-5">
               <Sidebar />
-              <div className="flex-1 h-full">
+              <div className="flex-1 h-full overflow-y-auto overflow-x-hidden">
                 {children}
               </div>
             </div>

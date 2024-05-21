@@ -25,41 +25,33 @@ const config: Config = {
           extend: "dark", // <- inherit default values from dark theme
           colors: {
             background: "#0D001A",
-            foreground: "#ffffff",
+            foreground: "#7738DD",
+            sideBarIconsColor: "#F9F5FF",
             bodyBackground: "#0E051A",
             activeItemBackground: "#AC95D1",
-            primary: {
-              50: "#3B096C",
-              100: "#520F83",
-              200: "#7318A2",
-              300: "#9823C2",
-              400: "#c031e2",
-              500: "#DD62ED",
-              600: "#F182F6",
-              700: "#FCADF9",
-              800: "#FDD5F9",
-              900: "#FEECFE",
-              DEFAULT: "#DD62ED",
-              foreground: "#ffffff",
-            },
-            focus: "#F182F6",
-          },
-          layout: {
-            disabledOpacity: "0.3",
-            borderWidth: {
-              small: "1px",
-              medium: "2px",
-              large: "3px",
-            },
+            titleColor: "#F9F5FF",
+            background2: "#21182B",
+            background3: "#35008B",
+            borderColor1: "#AC95D1",
+            contentIconsColor: "#DBC5FD",
+            labelColor: "#A270F2"
           },
         },
 
         "light": {
           extend: "light", // <- inherit default values from dark theme
           colors: {
+            background: "#FFFFFF",
             foreground: "#35008B",
             bodyBackground: "#F5FBFF",
+            sideBarIconsColor: "#F5FBFF",
             activeItemBackground: "#AC95D1",
+            titleColor: "black",
+            background2: "white",
+            background3: "#FBF8FF",
+            borderColor1: "#AC95D1",
+            contentIconsColor: "#35008B",
+            labelColor: "#AC95D1"
           },
         },
       },
