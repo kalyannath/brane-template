@@ -24,18 +24,20 @@
 
 
 ::-webkit-scrollbar {
-  width: 10px;
+  width: 4px;
+  height: 4px;
 }
 
 ::-webkit-scrollbar-track {
-  background: transparent;
+  background: rgba(255, 255, 255, 0.336);
+  border-radius: 10px;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #686868;
+  background: #00000055;
   border-radius: 10px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #888;
+  background: #0000009a;
 }
