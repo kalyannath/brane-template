@@ -1,6 +1,6 @@
 const Project = () => {
   return (
-    <div className="flex flex-col p-2 bg-cardBodyBackground">
+    <div className="flex flex-col p-24 bg-cardBodyBackground rounded-xl">
       Project
     </div>
   );

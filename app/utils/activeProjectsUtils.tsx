@@ -16,4 +16,10 @@ export const ActiveProjectsUtils = [
     { title: "Project title 14", completed: 10, },
     { title: "Project title 15", completed: 10, },
     { title: "Project title 16", completed: 10, },
+    { title: "Project title 16", completed: 10, },
+    { title: "Project title 16", completed: 10, },
+    { title: "Project title 16", completed: 10, },
+    { title: "Project title 16", completed: 10, },
+    { title: "Project title 16", completed: 10, },
+    { title: "Project title 16", completed: 10, },
 ]
