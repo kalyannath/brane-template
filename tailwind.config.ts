@@ -34,7 +34,10 @@ const config: Config = {
             background3: "#35008B",
             borderColor1: "#AC95D1",
             contentIconsColor: "#DBC5FD",
-            labelColor: "#A270F2"
+            labelColor: "#A270F2",
+            cardHeadingColor: "#BD98F9",
+            cardBodyBackground: "#7738DD",
+
           },
         },
 
@@ -51,7 +54,10 @@ const config: Config = {
             background3: "#FBF8FF",
             borderColor1: "#AC95D1",
             contentIconsColor: "#35008B",
-            labelColor: "#AC95D1"
+            labelColor: "#AC95D1",
+            cardHeadingColor: "#7738DD",
+            cardBodyBackground: "#DBC5FD",
+
           },
         },
       },

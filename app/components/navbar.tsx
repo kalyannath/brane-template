@@ -2,15 +2,14 @@
 
 import { Navbar, NavbarBrand, NavbarContent, Button, DropdownItem, DropdownTrigger, Dropdown, DropdownMenu, Avatar, Divider } from "@nextui-org/react";
 import { ThemeSwitcher } from "./themeSwitcher";
-import { BraneLogo } from "./braneLogo";
+import { BraneLogo } from "../icons/braneLogo";
 import { RiArrowDownSLine } from "react-icons/ri";
-import { BraneLogoText } from "./braneLogoText";
+import { BraneLogoText } from "../icons/braneLogoText";
 import { CiMenuBurger } from "react-icons/ci";
 import { TfiClose } from "react-icons/tfi";
 import { AppDispatch, RootState } from "../redux/store";
 import { useDispatch, useSelector } from "react-redux";
 import { toggle } from "../redux/features/sidedrawer-state-slice";
-
 
 const AppNavBar = () => {
     const drawerState = useSelector((state: RootState) => state.sideDrawerReducer.isOpen);

@@ -6,6 +6,7 @@ import AppNavBar from "./components/navbar";
 import { NextUIProv } from "./providers/NextUIProv";
 import Sidebar from "./components/sidebar";
 import ReduxProvider from "./redux/reduxProvider";
+import RightSideBar from "./components/rightSideBar";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -22,20 +23,25 @@ export default function RootLayout({
 
   return (
     <html lang="en">
-      <body className={`${inter.className} text-foreground bg-background`}>
+      <body className={`${inter.className} text-foreground bg-background border-box`}>
         <NextUIProv>
           <ReduxProvider>
-          <main className="h-screen w-screen flex flex-col box-border p-0 m-0">
-            <div className="app-nav-bar-container">
-              <AppNavBar />
-            </div>
-            <div className="bg-bodyBackground flex-1 overflow-y-auto overflow-x-hidden flex justify-center items-center px-1 py-5 gap-5">
-              <Sidebar />
-              <div className="flex-1 h-full overflow-y-auto overflow-x-hidden">
-                {children}
+            <main className="h-screen w-screen flex flex-col box-border p-0 m-0">
+              <div className="app-nav-bar-container">
+                <AppNavBar />
               </div>
-            </div>
-          </main>
+              <div className="bg-bodyBackground flex-1 w-full overflow-x-hidden overflow-y-hidden flex justify-center px-1 py-5 gap-5">
+                <Sidebar />
+                <div className="flex flex-1 px-2 lg:px-0 gap-5 flex-col lg:flex-row overflow-y-auto h-full">
+                  <div className="w-full lg:w-8/12 overflow-y-auto">
+                    {children}
+                  </div>
+                  <div className="w-full lg:w-4/12 overflow-y-auto">
+                    <RightSideBar />
+                  </div>
+                </div>
+              </div>
+            </main>
           </ReduxProvider>
         </NextUIProv>
       </body>

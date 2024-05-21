@@ -1,10 +1,9 @@
 import { Spacer } from "@nextui-org/react";
-import React from "react";
 import { CompanyDetailsUtils } from "../utils/companyDetailsUtils";
 
 const CompanyDetails = () => {
   return (
-    <div className="flex flex-col rounded-lg border-[0.5px] border-borderColor1/50 py-4 px-6 bg-background2 flex-1">
+    <div className="w-full flex flex-col rounded-lg border-[0.5px] border-borderColor1/50 py-4 px-6 bg-background2">
       <div className="text-titleColor/30 text-sm font-bold">Company name</div>
       <div className="text-titleColor text-md md:text-lg font-bold">Brane Enterpirses Private Limited</div>
       <Spacer y={4} />
