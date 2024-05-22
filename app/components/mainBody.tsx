@@ -6,7 +6,7 @@ const MainBody = ({
     children: React.ReactNode;
 }>) => {
     return (
-        <div className="w-full lg:w-9/12 overflow-y-auto">
+        <div className="w-full xl:w-9/12 overflow-y-auto">
             {children}
         </div>
     )

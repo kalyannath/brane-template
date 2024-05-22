@@ -4,7 +4,7 @@ import { Accordion, AccordionItem } from "@nextui-org/react";
 
 const RightSideBar = () => {
     return (
-        <div className="w-full lg:w-3/12 overflow-y-auto">
+        <div className="w-full xl:w-3/12 overflow-y-auto">
             <div className="h-full flex flex-col overflow-y-auto">
                 <Accordion>
                     <AccordionItem key="1" aria-label="Accordion 1" title="Accordion 1">
