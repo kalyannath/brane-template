@@ -33,9 +33,11 @@ export default function RootLayout({
               </div>
               <div className="bg-bodyBackground flex-1 w-full overflow-x-hidden overflow-y-hidden flex justify-center px-1 py-5 gap-5 transition-all duration-[500ms]">
                 <Sidebar />
-                <div className="flex flex-1 px-2 lg:px-0 gap-5 flex-col xl:flex-row overflow-y-auto h-full">
-                  <MainBody>{children}</MainBody>
-                  <RightSideBar />
+                <div className="block xl:flex flex-1 px-2 lg:px-0 gap-5 overflow-y-auto h-full">
+                  {/* <div className="overflow-y-auto h-full block xl:flex"> */}
+                    <MainBody>{children}</MainBody>
+                    <RightSideBar />
+                  {/* </div> */}
                 </div>
               </div>
             </main>

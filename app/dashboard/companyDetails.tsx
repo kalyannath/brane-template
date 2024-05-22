@@ -9,7 +9,7 @@ const CompanyDetails = () => {
       <Spacer y={4} />
       <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-2 gap-4">
         {CompanyDetailsUtils.map((c, index) => (
-          <div key={index} className="flex flex-col bg-background3 text-contentIconsColor rounded-lg border border-borderColor1 p-2 gap-2 justify-between">
+          <div key={index} className="min-w-fit flex flex-col bg-background3 text-contentIconsColor rounded-lg border border-borderColor1 p-2 gap-2 justify-between">
             {c.icon}
             <div className="flex justify-between items-end">
               <div className="text-xs sm:text-sm font-bold text-labelColor">{c.title}</div>
