@@ -1,6 +1,6 @@
 import { useEffect, useRef } from "react"
 
-export const AutonomyEngineerIcon = ({ size }: { size: number }) => {
+export const AutonomyEngineerIcon = ({ size = 10 }: { size: number }) => {
     /*
         sm  640px
         md  768px
@@ -20,11 +20,11 @@ export const AutonomyEngineerIcon = ({ size }: { size: number }) => {
             svgRef.current?.setAttribute("width", `${size - 20}px`);
             svgRef.current?.setAttribute("height", `${size - 20}px`);
         } else if (width > 768) {
+            svgRef.current?.setAttribute("width", `${size - 30}px`);
+            svgRef.current?.setAttribute("height", `${size - 30}px`);
+        } else {
             svgRef.current?.setAttribute("width", `${size - 40}px`);
             svgRef.current?.setAttribute("height", `${size - 40}px`);
-        } else {
-            svgRef.current?.setAttribute("width", `${size - 60}px`);
-            svgRef.current?.setAttribute("height", `${size - 60}px`);
         }
     };
 

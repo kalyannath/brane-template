@@ -20,11 +20,11 @@ export const DesignEngineerIcon = ({ size }: { size: number }) => {
             svgRef.current?.setAttribute("width", `${size - 20}px`);
             svgRef.current?.setAttribute("height", `${size - 20}px`);
         } else if (width > 768) {
+            svgRef.current?.setAttribute("width", `${size - 30}px`);
+            svgRef.current?.setAttribute("height", `${size - 30}px`);
+        } else {
             svgRef.current?.setAttribute("width", `${size - 40}px`);
             svgRef.current?.setAttribute("height", `${size - 40}px`);
-        } else {
-            svgRef.current?.setAttribute("width", `${size - 60}px`);
-            svgRef.current?.setAttribute("height", `${size - 60}px`);
         }
     };
 
