@@ -10,6 +10,7 @@ const Project = ({ ...props }) => {
         width={150}
         alt="NextUI hero Image"
         src="/images/drone.png"
+        isBlurred
       />
       <div className="w-full bg-background3 px-4 py-2 rounded-xl flex flex-col justify-center gap-2">
         <div className="text-titleColor font-semibold text-sm text-center">{props.title}</div>
@@ -28,14 +29,14 @@ const Project = ({ ...props }) => {
         />
         <Divider orientation="horizontal" />
         <div className="flex justify-between">
-          <Button size="sm" radius="full" isIconOnly className="z-0 bg-foreground text-sideBarIconsColor">
+          <Button size="sm" radius="full" isIconOnly className="bg-foreground text-sideBarIconsColor">
             <AiOutlineMessage size={20} />
           </Button>
-          <Button size="sm"  radius="full" isIconOnly className="bg-foreground text-sideBarIconsColor">
-          <FaListUl size={20} />
+          <Button size="sm" radius="full" isIconOnly className="bg-foreground text-sideBarIconsColor">
+            <FaListUl size={20} />
           </Button>
-          <Button size="sm"  radius="full" isIconOnly className="bg-foreground text-sideBarIconsColor">
-          <LuMoveUpRight size={20} />
+          <Button size="sm" radius="full" isIconOnly className="bg-foreground text-sideBarIconsColor">
+            <LuMoveUpRight size={20} />
           </Button>
         </div>
       </div>
