@@ -3,7 +3,7 @@ import { CompanyDetailsUtils } from "../utils/companyDetailsUtils";
 
 const CompanyDetails = () => {
   return (
-    <div className="w-full h-full flex flex-col rounded-lg border-[0.5px] border-borderColor1/50 py-4 px-6 bg-background2 justify-between">
+    <div className="transition-all duration-[500ms] w-full h-full flex flex-col rounded-lg border-[0.5px] border-borderColor1/50 py-4 px-6 bg-background2 justify-between">
       <div className="text-titleColor/30 text-sm font-bold">Company name</div>
       <div className="text-titleColor text-md md:text-lg font-bold">Brane Enterpirses Private Limited</div>
       <Spacer y={4} />
