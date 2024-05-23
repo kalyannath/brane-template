@@ -7,13 +7,14 @@ const Project = ({ ...props }) => {
   return (
     <div className="min-w-fit flex flex-col px-2 py-2 pt-4 bg-cardBodyBackground text-contentIconsColor rounded-xl items-center justify-between gap-2">
       <Image
-        width={150}
+        // width={150}
+        className="w-20 md:w-28 lg:w-36"
         alt="NextUI hero Image"
         src="/images/drone.png"
         isBlurred
       />
       <div className="w-full bg-background3 px-4 py-2 rounded-xl flex flex-col justify-center gap-2">
-        <div className="text-titleColor font-semibold text-sm text-center">{props.title}</div>
+        <div className="text-titleColor font-semibold text-xs md:text-sm text-center">{props.title}</div>
         <Divider orientation="horizontal" />
         <Progress
           size="sm"

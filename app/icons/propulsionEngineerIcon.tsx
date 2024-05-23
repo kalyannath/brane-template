@@ -13,22 +13,24 @@ export const PropulsionEngineerIcon = ({ size }: { size: number }) => {
     // Function to update SVG size based on screen width
     const updateSvgSize = () => {
         const width = window.innerWidth;
+        let newSize = size;
+
         if (width > 1280) {
-            svgRef.current?.setAttribute("width", `${size}px`);
-            svgRef.current?.setAttribute("height", `${size}px`);
+            newSize = size;
         } else if (width > 1024) {
-            svgRef.current?.setAttribute("width", `${size - 20}px`);
-            svgRef.current?.setAttribute("height", `${size - 20}px`);
+            newSize = size - 20;
         } else if (width > 768) {
-            svgRef.current?.setAttribute("width", `${size - 30}px`);
-            svgRef.current?.setAttribute("height", `${size - 30}px`);
+            newSize = size - 30;
         } else {
-            svgRef.current?.setAttribute("width", `${size - 40}px`);
-            svgRef.current?.setAttribute("height", `${size - 40}px`);
+            newSize = size - 40;
+        }
+
+        if (svgRef.current) {
+            svgRef.current.style.width = `${newSize}px`;
+            svgRef.current.style.height = `${newSize}px`;
         }
     };
 
-    // Use useEffect to add event listener for window resize
     useEffect(() => {
         // Call the updateSvgSize function when component mounts
         updateSvgSize();
@@ -40,10 +42,10 @@ export const PropulsionEngineerIcon = ({ size }: { size: number }) => {
         return () => {
             window.removeEventListener("resize", updateSvgSize);
         };
-    }, []); // Empty dependency array ensures the effect runs only once after initial render
+    }, [size]); // Re-run effect if size prop changes
 
     return (
-        <svg ref={svgRef} viewBox="0 0 115 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <svg ref={svgRef} viewBox="0 0 115 120" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ width: `${size}px`, height: `${size}px` }}>
             <path d="M27.5145 35.6218C27.8924 35.6218 28.2704 35.3384 28.2704 34.8659V24.2833C28.2704 23.9053 27.9869 23.5273 27.5145 23.5273C27.042 23.5273 26.7585 23.8108 26.7585 24.2833V34.8659C26.853 35.2439 27.1365 35.6218 27.5145 35.6218Z" fill="currentColor" />
             <path d="M27.5145 42.5189C27.8924 42.5189 28.2704 42.2354 28.2704 41.763V38.3614C28.2704 37.9834 27.9869 37.6055 27.5145 37.6055C27.042 37.6055 26.7585 37.8889 26.7585 38.3614V41.763C26.853 42.2354 27.1365 42.5189 27.5145 42.5189Z" fill="currentColor" />
             <path d="M110.759 63.3074C111.137 63.3074 111.515 63.0239 111.515 62.5515V51.9688C111.515 51.5908 111.231 51.2129 110.759 51.2129C110.381 51.2129 110.003 51.4964 110.003 51.9688V62.5515C110.097 62.9294 110.381 63.3074 110.759 63.3074Z" fill="currentColor" />

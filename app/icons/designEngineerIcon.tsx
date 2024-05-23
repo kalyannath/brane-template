@@ -13,22 +13,24 @@ export const DesignEngineerIcon = ({ size }: { size: number }) => {
     // Function to update SVG size based on screen width
     const updateSvgSize = () => {
         const width = window.innerWidth;
+        let newSize = size;
+
         if (width > 1280) {
-            svgRef.current?.setAttribute("width", `${size}px`);
-            svgRef.current?.setAttribute("height", `${size}px`);
+            newSize = size;
         } else if (width > 1024) {
-            svgRef.current?.setAttribute("width", `${size - 20}px`);
-            svgRef.current?.setAttribute("height", `${size - 20}px`);
+            newSize = size - 20;
         } else if (width > 768) {
-            svgRef.current?.setAttribute("width", `${size - 30}px`);
-            svgRef.current?.setAttribute("height", `${size - 30}px`);
+            newSize = size - 30;
         } else {
-            svgRef.current?.setAttribute("width", `${size - 40}px`);
-            svgRef.current?.setAttribute("height", `${size - 40}px`);
+            newSize = size - 40;
+        }
+
+        if (svgRef.current) {
+            svgRef.current.style.width = `${newSize}px`;
+            svgRef.current.style.height = `${newSize}px`;
         }
     };
 
-    // Use useEffect to add event listener for window resize
     useEffect(() => {
         // Call the updateSvgSize function when component mounts
         updateSvgSize();
@@ -40,10 +42,10 @@ export const DesignEngineerIcon = ({ size }: { size: number }) => {
         return () => {
             window.removeEventListener("resize", updateSvgSize);
         };
-    }, []); // Empty dependency array ensures the effect runs only once after initial render
+    }, [size]); // Re-run effect if size prop changes
 
     return (
-        <svg ref={svgRef} viewBox="0 0 112 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <svg ref={svgRef} viewBox="0 0 112 120" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ width: `${size}px`, height: `${size}px` }}>
             <path d="M111.167 28.084H99.3709C98.9934 28.084 98.616 28.3671 98.616 28.8389V119.245C98.616 119.622 98.8991 120 99.3709 120H111.167C111.545 120 111.922 119.717 111.922 119.245V28.7446C111.922 28.3671 111.545 28.084 111.167 28.084ZM100.032 118.49V29.4995H110.412V35.5392H105.316C104.939 35.5392 104.561 35.8223 104.561 36.2941C104.561 36.6716 104.844 37.0491 105.316 37.0491H110.412V42.9944H106.826C106.449 42.9944 106.071 43.2775 106.071 43.7493C106.071 44.2212 106.354 44.5043 106.826 44.5043H110.412V50.7327H105.316C104.939 50.7327 104.561 51.0158 104.561 51.4876C104.561 51.8651 104.844 52.2426 105.316 52.2426H110.412V58.0935H106.826C106.449 58.0935 106.071 58.3766 106.071 58.8484C106.071 59.3203 106.354 59.6034 106.826 59.6034H110.412V65.8318H105.316C104.939 65.8318 104.561 66.1149 104.561 66.5867C104.561 66.9642 104.844 67.3417 105.316 67.3417H110.412V73.1926H106.826C106.449 73.1926 106.071 73.4757 106.071 73.9475C106.071 74.325 106.354 74.7025 106.826 74.7025H110.412V80.9309H105.316C104.939 80.9309 104.561 81.214 104.561 81.6858C104.561 82.0633 104.844 82.4408 105.316 82.4408H110.412V88.4804H106.826C106.449 88.4804 106.071 88.7635 106.071 89.2354C106.071 89.7072 106.354 89.9903 106.826 89.9903H110.412V96.2187H105.316C104.939 96.2187 104.561 96.5018 104.561 96.9737C104.561 97.3512 104.844 97.7286 105.316 97.7286H110.412V103.768H106.826C106.449 103.768 106.071 104.051 106.071 104.523C106.071 104.901 106.354 105.278 106.826 105.278H110.412V111.507H105.316C104.939 111.507 104.561 111.79 104.561 112.262C104.561 112.639 104.844 113.016 105.316 113.016H110.412V119.15H100.032V118.49Z" fill="currentColor" />
             <path d="M83.7056 39.0307V91.1226C83.7056 93.8593 85.9704 96.1242 88.7071 96.1242H88.9903C91.727 96.1242 93.9918 93.8593 93.9918 91.1226V87.4422V82.4406V39.0307C93.9918 38.9363 93.9918 38.9363 93.9918 38.8419C93.9918 38.6532 93.9918 38.5588 93.9918 38.3701L89.5565 28.4613C89.3677 27.9895 88.5184 27.9895 88.2353 28.4613L83.7999 38.3701C83.7056 38.5588 83.7056 38.6532 83.7999 38.8419C83.7056 38.9363 83.7056 38.9363 83.7056 39.0307ZM85.1211 83.1012H92.4819V86.6873H85.1211V83.1012ZM92.5763 81.6857H85.2155V39.6913H92.5763V81.6857ZM88.9903 94.6143H88.7071C86.7254 94.6143 85.1211 93.01 85.1211 91.0282V88.1028H92.4819V91.1226C92.5763 93.1044 90.972 94.6143 88.9903 94.6143ZM88.8959 30.5374L92.3876 38.2757H85.4986L88.8959 30.5374Z" fill="currentColor" />
             <path d="M88.8958 73.6655C89.2733 73.6655 89.6508 73.3824 89.6508 72.9106V69.1358C89.6508 68.7583 89.3677 68.3809 88.8958 68.3809C88.5183 68.3809 88.1409 68.664 88.1409 69.1358V72.9106C88.1409 73.3824 88.424 73.6655 88.8958 73.6655Z" fill="currentColor" />
