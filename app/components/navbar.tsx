@@ -10,11 +10,13 @@ import { TfiClose } from "react-icons/tfi";
 import { AppDispatch, RootState } from "../redux/store";
 import { useDispatch, useSelector } from "react-redux";
 import { toggle } from "../redux/features/sidedrawer-state-slice";
+import { login, logout } from "../redux/features/auth-slice";
 
 const AppNavBar = () => {
     const drawerState = useSelector((state: RootState) => state.sideDrawerReducer.isOpen);
     const dispatch = useDispatch<AppDispatch>();
-    
+    const authState = useSelector((state: RootState) => state.authReducer.isLoggedIn);
+
     return (
         <Navbar
             isBordered
@@ -41,7 +43,10 @@ const AppNavBar = () => {
             </NavbarContent>
 
             <NavbarContent as="div" justify="end">
-                <Dropdown placement="bottom-end">
+                {!authState && <Button className="text-foreground" variant="light" onClick={() => { dispatch(login()); }} >
+                    Login
+                </Button>}
+                {authState && <Dropdown placement="bottom-end">
                     <DropdownTrigger>
                         <div className="flex items-center gap-1 bg-foreground text-background p-1 rounded-full cursor-pointer">
                             <Avatar
@@ -67,11 +72,11 @@ const AppNavBar = () => {
                         <DropdownItem key="system">System</DropdownItem>
                         <DropdownItem key="configurations">Configurations</DropdownItem>
                         <DropdownItem key="help_and_feedback">Help & Feedback</DropdownItem>
-                        <DropdownItem key="logout" color="danger">
+                        <DropdownItem key="logout" color="danger" onPress={() => { dispatch(logout()); }}>
                             Log Out
                         </DropdownItem>
                     </DropdownMenu>
-                </Dropdown>
+                </Dropdown>}
                 <ThemeSwitcher />
             </NavbarContent>
         </Navbar>

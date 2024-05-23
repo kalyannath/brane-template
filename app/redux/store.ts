@@ -1,9 +1,11 @@
 import { configureStore } from "@reduxjs/toolkit";
 import sideDrawerReducer from "./features/sidedrawer-state-slice";
+import authReducer from "./features/auth-slice";
 
 export const store = configureStore({
   reducer: {
-    sideDrawerReducer
+    sideDrawerReducer,
+    authReducer
   },
 });
 
