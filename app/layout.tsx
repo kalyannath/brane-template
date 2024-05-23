@@ -27,11 +27,11 @@ export default function RootLayout({
       <body className={`${inter.className} text-foreground bg-background border-box transition-all duration-[500ms]`}>
         <NextUIProv>
           <ReduxProvider>
-            <main className="h-screen w-screen flex flex-col box-border p-0 m-0 transition-all duration-[500ms]">
+            <main className="h-screen w-screen flex flex-col box-border p-0 m-0">
               <div className="app-nav-bar-container">
                 <AppNavBar />
               </div>
-              <div className="bg-bodyBackground flex-1 w-full overflow-x-hidden overflow-y-hidden flex justify-center px-1 py-5 gap-5 transition-all duration-[500ms]">
+              <div className="bg-bodyBackground flex-1 w-full overflow-x-hidden overflow-y-hidden flex justify-center px-1 py-5 gap-5">
                 <Sidebar />
                 <div className="block xl:flex flex-1 px-2 lg:px-0 gap-5 overflow-y-auto h-full">
                   <MainBody>{children}</MainBody>

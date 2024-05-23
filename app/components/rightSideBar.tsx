@@ -1,21 +1,77 @@
 "use client"
 
-import { Accordion, AccordionItem } from "@nextui-org/react";
+import { useState } from "react";
+import { Accordion, AccordionItem, Image, Input } from "@nextui-org/react";
+import { IoSearchOutline } from "react-icons/io5";
+import { RightSideBarUtils } from "../utils/rightSideBardData";
 
 const RightSideBar = () => {
+    const [accordionItemIdx, setAccordionItemIdx] = useState<number | null>(null);
+
+    const handleAccordionItemClick = (itemIdx: number) => {
+        console.log(itemIdx);
+        setAccordionItemIdx(itemIdx === accordionItemIdx ? null : itemIdx);
+    }
     return (
-        <div className="w-full xl:w-3/12 overflow-y-auto h-3/6 xl:h-full pt-4 xl:pt-0">
-            <div className="overflow-y-auto h-full">
+        <div className="mt-4 xl:mt-0 flex flex-col gap-4 w-full xl:w-3/12 h-full rounded-lg border-[0.5px] border-borderColor1/50 py-6 px-4 bg-background2">
+            <div className="flex justify-between items-center gap-5">
+                <div className="min-w-fit text-cardHeadingColor text-xs md:text-sm lg:text-md font-bold">Autonomy Engineers</div>
+                <Input
+                    isClearable
+                    type="text"
+                    startContent={
+                        <IoSearchOutline className="text-titleColor" />
+                    }
+                    className="flex-1 max-w-64"
+                />
+            </div>
+            <div className="flex-1 overflow-y-auto">
                 <Accordion>
-                    <AccordionItem key="1" aria-label="Accordion 1" title="Accordion 1">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                    </AccordionItem>
-                    <AccordionItem key="2" aria-label="Accordion 2" title="Accordion 2">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                    </AccordionItem>
-                    <AccordionItem key="3" aria-label="Accordion 3" title="Accordion 3">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                    </AccordionItem>
+                    {
+                        RightSideBarUtils.map((item, index) => (
+                            <AccordionItem
+                                hideIndicator
+                                className="px-4 py-2 text-titleColor text-xs sm:text-sm bg-cardBodyBackground/20 rounded-lg border-[0.5px] border-borderColor1/50"
+                                textValue={`${item.name}, ${item.designation}`}
+                                onPress={() => { handleAccordionItemClick(index) }}
+                                key={index}
+                                title={
+                                    <div className={`text-titleColor text-xs sm:text-sm flex gap-4 items-center ${accordionItemIdx === index ? "flex-col justify-center" : ""}`}
+                                    >
+                                        <Image
+                                            className={`w-${accordionItemIdx === index ? "24" : "12"} rounded-full`}
+                                            src={item.picUrl}
+                                        />
+                                        <div className={`flex flex-col ${accordionItemIdx === index ? "items-center" : ""}`}>
+                                            <div className="font-bold">{item.name}</div>
+                                            <div className="">{item.designation}</div>
+                                        </div>
+                                    </div>
+                                }
+                            >
+                                <div className="text-center flex flex-col gap-4 justify-center items-center">
+                                    <div className="flex gap-4 items-start">
+                                        <div className="flex flex-col justify-center flex-1">
+                                            <div className="text-titleColor/70 text-xs">Company</div>
+                                            <div className="font-semibold">{item.company}</div>
+                                        </div>
+                                        <div className="flex flex-col justify-center flex-1">
+                                            <div className="text-titleColor/70 text-xs">Employee ID</div>
+                                            <div className="font-semibold">{item.employeeId}</div>
+                                        </div>
+                                        <div className="flex flex-col justify-center flex-1">
+                                            <div className="text-titleColor/70 text-xs">Team</div>
+                                            <div className="font-semibold">{item.team}</div>
+                                        </div>
+                                    </div>
+                                    <div className="flex flex-col justify-center">
+                                        <div className="text-titleColor/70 text-xs">Email</div>
+                                        <div className="font-semibold">{item.email}</div>
+                                    </div>
+                                </div>
+                            </AccordionItem>
+                        ))
+                    }
                 </Accordion>
             </div>
         </div>
