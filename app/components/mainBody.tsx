@@ -4,6 +4,8 @@ import { useSelector } from "react-redux";
 import RightSideBar from "./rightSideBar";
 import Sidebar from "./sidebar";
 import { RootState } from "../redux/store";
+import { useEffect } from "react";
+import { useRouter } from "next/navigation";
 
 const MainBody = ({
     children,
@@ -11,6 +13,13 @@ const MainBody = ({
     children: React.ReactNode;
 }>) => {
     const authState = useSelector((state: RootState) => state.authReducer.isLoggedIn);
+    const router = useRouter()
+
+    useEffect(() => {
+        if (!authState) {
+            router.push("/login");
+        }
+    }, [authState])
 
     return (
 

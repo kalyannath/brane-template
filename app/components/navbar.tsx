@@ -43,9 +43,6 @@ const AppNavBar = () => {
             </NavbarContent>
 
             <NavbarContent as="div" justify="end">
-                {!authState && <Button className="text-foreground" variant="light" onClick={() => { dispatch(login()); }} >
-                    Login
-                </Button>}
                 {authState && <Dropdown placement="bottom-end">
                     <DropdownTrigger>
                         <div className="flex items-center gap-1 bg-foreground text-background p-1 rounded-full cursor-pointer">

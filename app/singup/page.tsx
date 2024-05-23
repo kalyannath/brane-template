@@ -2,7 +2,7 @@
 
 import { Button, Divider, Image, } from "@nextui-org/react";
 import { useState } from "react";
-import { UserRegModel, UserRegistrationModelType } from "../models/userRegistrationModel";
+import { UserRegModel, UserRegistrationModelType } from "../models/AuthModel";
 import TypeInput from "../formUtils/typeInput";
 import { useForm, SubmitHandler } from "react-hook-form";
 

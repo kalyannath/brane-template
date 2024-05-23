@@ -12,3 +12,13 @@ export const UserRegModel: UserRegistrationModelType = {
     email: "",
     password: ""
 }
+
+export type UserLoginModelType = {
+    username: string,
+    password: string,
+}
+
+export const UserLoginModel: UserLoginModelType = {
+    username: "",
+    password: ""
+}

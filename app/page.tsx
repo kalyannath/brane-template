@@ -9,7 +9,7 @@ export default function Home() {
       </div>
       <div>
         <Link href={"/login"}>
-          <Button>Login</Button>
+          Login
         </Link>
       </div>
     </div>
