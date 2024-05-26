@@ -14,7 +14,7 @@ const RightSideBar = () => {
     }
     return (
         <div className="mt-4 xl:mt-0 flex flex-col gap-4 w-full xl:w-3/12 h-full rounded-lg border-[0.5px] border-borderColor1/50 py-6 px-4 bg-background2">
-            <div className="flex justify-between items-center gap-5">
+            <div className="w-full flex justify-between items-center gap-5">
                 <div className="min-w-fit text-cardHeadingColor text-xs md:text-sm lg:text-md font-bold">Autonomy Engineers</div>
                 <Input
                     isClearable
@@ -25,7 +25,7 @@ const RightSideBar = () => {
                     className="flex-1 max-w-64"
                 />
             </div>
-            <div className="flex-1 overflow-y-auto">
+            <div className="w-full flex-1 overflow-y-auto">
                 <Accordion>
                     {
                         RightSideBarUtils.map((item, index) => (

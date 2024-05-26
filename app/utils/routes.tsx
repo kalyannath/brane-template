@@ -5,7 +5,7 @@ import { PiBuildingApartment } from "react-icons/pi";
 
 export const Routes1 = [
     {
-        route: "/",
+        route: "/dashboard",
         icon: <IoHome size={25} />,
         name: "Home"
     },

@@ -4,9 +4,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import AppNavBar from "./components/navbar";
 import { NextUIProv } from "./providers/NextUIProv";
-import Sidebar from "./components/sidebar";
 import ReduxProvider from "./redux/reduxProvider";
-import RightSideBar from "./components/rightSideBar";
 import MainBody from "./components/mainBody";
 
 const inter = Inter({ subsets: ["latin"] });

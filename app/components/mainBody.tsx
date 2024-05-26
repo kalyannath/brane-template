@@ -13,13 +13,6 @@ const MainBody = ({
     children: React.ReactNode;
 }>) => {
     const authState = useSelector((state: RootState) => state.authReducer.isLoggedIn);
-    const router = useRouter()
-
-    useEffect(() => {
-        if (!authState) {
-            router.push("/login");
-        }
-    }, [authState])
 
     return (
 

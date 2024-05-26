@@ -4,45 +4,80 @@ import { Button, Divider } from "@nextui-org/react";
 import TypeInput from "../formUtils/typeInput";
 import { UserLoginModel, UserLoginModelType } from "../models/AuthModel";
 import { SubmitHandler, useForm } from "react-hook-form";
+import { UserLoginFormValidations } from "./services/LoginFormValidations";
+import { BraneLogo } from "../icons/braneLogo";
+import { BraneLogoText } from "../icons/braneLogoText";
+import Link from "next/link";
+import { HiOutlineMail } from "react-icons/hi";
+import { MdLockOutline } from "react-icons/md";
+import TypePassword from "../formUtils/typePassword";
+import { useRouter } from "next/navigation";
+import { useDispatch } from "react-redux";
+import { AppDispatch } from "../redux/store";
+import { login } from "../redux/features/auth-slice";
 
 const Login = () => {
-    const { handleSubmit, control, reset, watch, setValue } = useForm<UserLoginModelType>({
-        defaultValues: UserLoginModel,
-    });
 
-    const onSubmit: SubmitHandler<UserLoginModelType> = (data) => console.log(data)
+    const router = useRouter();
+    const dispatch = useDispatch<AppDispatch>();
+
+    const {
+        control,
+        handleSubmit,
+        reset,
+        register,
+        watch,
+        setValue,
+    } = useForm<UserLoginModelType>();
+
+    const onSubmit: SubmitHandler<UserLoginModelType> = (data) => {
+        console.log("form data::::::::", data);
+        setTimeout(() => {
+            router.push("/dashboard")
+            dispatch(login())
+        }, 2000)
+    }
+
     return (
         <div className="w-full h-full flex justify-center items-center">
-            <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-4 rounded-lg border-[0.5px] border-borderColor1/50 py-4 px-6">
-                <div className="font-bold text-start">
-                    Login
+            <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-6 rounded-lg border-[0.5px] border-borderColor1/50 p-8">
+                <div className="flex justify-between items-center">
+                    <div className="flex justify-center items-center gap-4">
+                        <BraneLogo width={25} height={25} />
+                        <BraneLogoText size={100} />
+                    </div>
+                    <Divider orientation="vertical" />
+                    <div className="font-semibold text-md">
+                        App name
+                    </div>
                 </div>
                 <Divider />
-                <div className="flex flex-col gap-5">
+                <div className="flex flex-col gap-4">
                     <TypeInput
-                        name="email"
+                        name="username"
                         control={control}
-                        rules={{ required: true }}
+                        rules={UserLoginFormValidations.username}
                         label="Email"
-                        placeholder="Enter email"
                         type="email"
+                        required={true}
+                        startContent={<HiOutlineMail size={20}/>}
+                        size="lg"
                     />
-                    <TypeInput
+                    <TypePassword
                         name="password"
                         control={control}
-                        rules={{ required: true }}
+                        rules={UserLoginFormValidations.password}
                         label="Password"
-                        placeholder="Enter password"
-                        type="password"
+                        required={true}
+                        startContent={<MdLockOutline size={20}/>}
+                        size="lg"
                     />
                 </div>
-                <div className="flex flex-wrap gap-4 items-space justify-between">
+                <div className="flex flex-col gap-4 items-space justify-between items-center">
                     <Button type="submit" color="primary" variant="solid" onClick={handleSubmit(onSubmit)}>
-                        Sign Up
+                        Login
                     </Button>
-                    <Button color="primary" variant="light">
-                        Already have an account? Login
-                    </Button>
+                    <Link href="/signup" className="text-sm text-blue-500">Don't have account? Register here.</Link>
                 </div>
             </form>
         </div>

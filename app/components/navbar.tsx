@@ -10,7 +10,7 @@ import { TfiClose } from "react-icons/tfi";
 import { AppDispatch, RootState } from "../redux/store";
 import { useDispatch, useSelector } from "react-redux";
 import { toggle } from "../redux/features/sidedrawer-state-slice";
-import { login, logout } from "../redux/features/auth-slice";
+import { logout } from "../redux/features/auth-slice";
 
 const AppNavBar = () => {
     const drawerState = useSelector((state: RootState) => state.sideDrawerReducer.isOpen);
@@ -22,17 +22,17 @@ const AppNavBar = () => {
             isBordered
             maxWidth={'full'}
         >
-            <NavbarContent justify="center" className="sm:hidden">
+            {authState && <NavbarContent justify="center" className="sm:hidden">
                 <Button className="text-foreground" variant="light" isIconOnly onClick={() => { dispatch(toggle()); }} >
                     {!drawerState ? <CiMenuBurger size={25} /> : <TfiClose size={20} />}
                 </Button>
-            </NavbarContent>
+            </NavbarContent>}
 
             <NavbarContent justify="center">
                 <NavbarBrand className="flex gap-2">
                     <BraneLogo width={30} height={30} />
                     <span className="hidden md:block">
-                        <BraneLogoText width={120} height={50} />
+                        <BraneLogoText size={120}/>
                     </span>
                 </NavbarBrand>
                 <Divider orientation="vertical" />
