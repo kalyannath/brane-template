@@ -2,7 +2,7 @@
 
 import { Button, Divider } from "@nextui-org/react";
 import TypeInput from "../formUtils/typeInput";
-import { UserLoginModel, UserLoginModelType } from "../models/AuthModel";
+import { UserLoginModelType } from "../models/AuthModel";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { UserLoginFormValidations } from "./services/LoginFormValidations";
 import { BraneLogo } from "../icons/braneLogo";
@@ -32,10 +32,8 @@ const Login = () => {
 
     const onSubmit: SubmitHandler<UserLoginModelType> = (data) => {
         console.log("form data::::::::", data);
-        setTimeout(() => {
-            router.push("/dashboard")
-            dispatch(login())
-        }, 2000)
+        router.push("/dashboard")
+        dispatch(login())
     }
 
     return (

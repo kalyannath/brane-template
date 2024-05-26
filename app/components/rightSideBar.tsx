@@ -6,14 +6,14 @@ import { IoSearchOutline } from "react-icons/io5";
 import { RightSideBarUtils } from "../utils/rightSideBardData";
 
 const RightSideBar = () => {
-    const [accordionItemIdx, setAccordionItemIdx] = useState<number | null>(null);
+    const [accordionItemIdx, setAccordionItemIdx] = useState<number | null>(0);
 
     const handleAccordionItemClick = (itemIdx: number) => {
         console.log(itemIdx);
         setAccordionItemIdx(itemIdx === accordionItemIdx ? null : itemIdx);
     }
     return (
-        <div className="mt-4 xl:mt-0 flex flex-col gap-4 w-full xl:w-3/12 h-full rounded-lg border-[0.5px] border-borderColor1/50 py-6 px-4 bg-background2">
+        <div className="mt-4 xl:mt-0 flex flex-col gap-4 w-full xl:w-4/12 h-full rounded-lg border-[0.5px] border-borderColor1/50 py-6 px-4 bg-background2">
             <div className="w-full flex justify-between items-center gap-5">
                 <div className="min-w-fit text-cardHeadingColor text-xs md:text-sm lg:text-md font-bold">Autonomy Engineers</div>
                 <Input
@@ -26,12 +26,12 @@ const RightSideBar = () => {
                 />
             </div>
             <div className="w-full flex-1 overflow-y-auto">
-                <Accordion>
+                <Accordion variant="light" defaultExpandedKeys={["0"]}>
                     {
                         RightSideBarUtils.map((item, index) => (
                             <AccordionItem
                                 hideIndicator
-                                className="px-4 py-2 text-titleColor text-xs sm:text-sm bg-cardBodyBackground/20 rounded-lg border-[0.5px] border-borderColor1/50"
+                                className="px-4 py-2 text-titleColor text-xs sm:text-sm bg-cardBodyBackground/20 rounded-lg border-[0.5px] border-borderColor1/50 mb-2"
                                 textValue={`${item.name}, ${item.designation}`}
                                 onPress={() => { handleAccordionItemClick(index) }}
                                 key={index}
@@ -39,7 +39,7 @@ const RightSideBar = () => {
                                     <div className={`text-titleColor text-xs sm:text-sm flex gap-4 items-center ${accordionItemIdx === index ? "flex-col justify-center" : ""}`}
                                     >
                                         <Image
-                                            className={`w-${accordionItemIdx === index ? "24" : "12"} rounded-full`}
+                                            className={`w-${accordionItemIdx === index ? "16" : "12"} rounded-full`}
                                             src={item.picUrl}
                                         />
                                         <div className={`flex flex-col ${accordionItemIdx === index ? "items-center" : ""}`}>

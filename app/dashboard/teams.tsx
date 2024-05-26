@@ -1,4 +1,4 @@
-import { Card, Image } from "@nextui-org/react";
+import { Card } from "@nextui-org/react";
 import { PropulsionEngineerIcon } from "../icons/propulsionEngineerIcon";
 import { DesignEngineerIcon } from "../icons/designEngineerIcon";
 import { AutonomyEngineerIcon } from "../icons/autonomyEngineerIcon";
