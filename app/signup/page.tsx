@@ -9,6 +9,8 @@ import { BraneLogo } from "../icons/braneLogo";
 import { BraneLogoText } from "../icons/braneLogoText";
 import { UserRegistrationFormValidations } from "./service/RegistrationFormValidations";
 import { HiOutlineMail } from "react-icons/hi";
+import TypePassword from "../formUtils/typePassword";
+import { MdLockOutline } from "react-icons/md";
 
 const SignUp = () => {
 
@@ -39,6 +41,7 @@ const SignUp = () => {
                     <div className="flex justify-center items-center gap-4">
                         <BraneLogo width={25} height={25} />
                         <BraneLogoText size={100} />
+                        <Divider orientation="vertical" />
                         <div className="font-light text-md">
                             App name
                         </div>
@@ -48,7 +51,27 @@ const SignUp = () => {
                     </div>
                 </div>
                 <Divider />
-                <form onSubmit={handleSubmit(onSubmit)} className="flex w-full overflow-auto flex-col gap-5">
+                <form onSubmit={handleSubmit(onSubmit)} className="flex w-full overflow-auto flex-col gap-4 p-4">
+                    <TypeInput
+                        name="name"
+                        control={control}
+                        rules={UserRegistrationFormValidations.name}
+                        label="Name"
+                        type="text"
+                        required={true}
+                        placeholder=" "
+                        size="md"
+                    />
+                    <TypeInput
+                        name="age"
+                        control={control}
+                        rules={UserRegistrationFormValidations.age}
+                        label="Age"
+                        type="number"
+                        required={true}
+                        size="md"
+                        placeholder=" "
+                    />
                     <TypeInput
                         name="email"
                         control={control}
@@ -57,39 +80,22 @@ const SignUp = () => {
                         type="email"
                         required={true}
                         startContent={<HiOutlineMail size={20} />}
-                        size="lg"
+                        size="md"
                     />
-                    <TypeInput
-                        name="age"
-                        control={control}
-                        rules={{ required: true }}
-                        label="Age"
-                        type="number"
-                        required={true}
-                    />
-                    <TypeInput
-                        name="email"
-                        control={control}
-                        rules={{ required: true }}
-                        label="Email"
-                        placeholder="Enter email"
-                        type="email"
-                        required={true}
-                    />
-                    <TypeInput
+                    <TypePassword
                         name="password"
                         control={control}
-                        rules={{ required: true }}
+                        rules={UserRegistrationFormValidations.password}
                         label="Password"
-                        placeholder="Enter password"
-                        type="password"
                         required={true}
+                        startContent={<MdLockOutline size={20}/>}
+                        size="md"
                     />
-                    <div className="flex flex-wrap gap-4 items-space justify-between">
+                    <div className="flex flex-wrap gap-4 items-space justify-between items-center">
                         <Button type="submit" color="primary" variant="solid" onClick={handleSubmit(onSubmit)}>
                             Sign Up
                         </Button>
-                        <Link href="/login">Already have an account? Login</Link>
+                        <Link href="/login" className="text-sm text-blue-500">Already have an account? Login</Link>
                     </div>
                 </form>
             </div>

@@ -75,6 +75,7 @@ const Login = () => {
                     <Button type="submit" color="primary" variant="solid" onClick={handleSubmit(onSubmit)}>
                         Login
                     </Button>
+                    <Link href="/signup" className="text-sm text-blue-500">Forgot password? Reset here.</Link>
                     <Link href="/signup" className="text-sm text-blue-500">Don't have account? Register here.</Link>
                 </div>
             </form>

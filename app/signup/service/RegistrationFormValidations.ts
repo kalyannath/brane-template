@@ -1,4 +1,14 @@
 export const UserRegistrationFormValidations = {
+    name: {
+        required: "Required",
+    },
+    age: {
+        required: "Required",
+        min: {
+            value: 18,
+            message: "Age should be >= 18"
+        },
+    },
     email: {
         required: "Required",
         pattern: {

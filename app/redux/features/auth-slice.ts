@@ -5,7 +5,7 @@ type AuthState = {
 };
 
 const initialState: AuthState = {
-  isLoggedIn: false,
+  isLoggedIn: true,
 };
 
 export const authStateToggle = createSlice({
