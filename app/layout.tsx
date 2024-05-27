@@ -6,6 +6,7 @@ import AppNavBar from "./components/navbar";
 import { NextUIProv } from "./providers/NextUIProv";
 import ReduxProvider from "./redux/reduxProvider";
 import MainBody from "./components/mainBody";
+import { Toaster } from "@/components/ui/toaster"
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -25,6 +26,7 @@ export default function RootLayout({
       <body className={`${inter.className} text-foreground bg-background border-box transition-all duration-[500ms]`}>
         <NextUIProv>
           <ReduxProvider>
+            <Toaster />
             <main className="h-screen w-screen flex flex-col box-border p-0 m-0">
               <div className="app-nav-bar-container">
                 <AppNavBar />

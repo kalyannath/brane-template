@@ -11,9 +11,11 @@ import { UserRegistrationFormValidations } from "./service/RegistrationFormValid
 import { HiOutlineMail } from "react-icons/hi";
 import TypePassword from "../formUtils/typePassword";
 import { MdLockOutline } from "react-icons/md";
+import { ToastAction } from "@/components/ui/toast"
+import { useToast } from "@/components/ui/use-toast"
 
 const SignUp = () => {
-
+    const { toast } = useToast()
     const {
         control,
         handleSubmit,
@@ -23,7 +25,14 @@ const SignUp = () => {
         setValue,
     } = useForm<UserRegistrationModelType>();
 
-    const onSubmit: SubmitHandler<UserRegistrationModelType> = (data) => console.log(data)
+    const onSubmit: SubmitHandler<UserRegistrationModelType> = (data) => {
+        console.log(data);
+        toast({
+            title: "Success",
+            description: "Check your inbox for veririfcation link email.",
+            action: <ToastAction altText="Close">Close</ToastAction>,
+        })
+    }
     return (
         <div className="flex flex-col w-full h-full md:flex-row p-10 gap-10">
             <div className="hidden md:flex justify-center items-center flex-1">

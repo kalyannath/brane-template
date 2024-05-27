@@ -11,13 +11,14 @@ import { HiOutlineMail } from "react-icons/hi";
 import { useRouter } from "next/navigation";
 import { useDispatch } from "react-redux";
 import { AppDispatch } from "../redux/store";
-import { login } from "../redux/features/auth-slice";
 import { PasswordResetFormValidations } from "./services/passwordResetValidations";
+import { useToast } from "@/components/ui/use-toast"
 
 const Login = () => {
 
     const router = useRouter();
     const dispatch = useDispatch<AppDispatch>();
+    const { toast } = useToast()
 
     const {
         control,
@@ -30,6 +31,10 @@ const Login = () => {
 
     const onSubmit: SubmitHandler<UserLoginModelType> = (data) => {
         console.log("form data::::::::", data);
+        toast({
+            title: "Reset link sent",
+            description: "to registered email address",
+        })
     }
 
     return (
@@ -54,7 +59,7 @@ const Login = () => {
                         label="Email"
                         type="email"
                         required={true}
-                        startContent={<HiOutlineMail size={20}/>}
+                        startContent={<HiOutlineMail size={20} />}
                         size="lg"
                     />
                 </div>
