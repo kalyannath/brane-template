@@ -5,7 +5,7 @@ import { AutonomyEngineerIcon } from "../icons/autonomyEngineerIcon";
 
 const Teams = () => {
     return (
-        <div className="flex flex-col gap-4">
+        <div className="flex flex-col gap-4 bg-background2 rounded-lg border-[0.5px] border-borderColor1/50 py-2 px-4">
             <div className="text-contentIconsColor font-semibold text-lg">Teams</div>
             <div className="flex gap-4 overflow-x-auto">
                 <Card className="min-w-fit rounded-xl bg-gradient-to-r from-activeItemBackground/50 to-background text-contentIconsColor border-[0.5px] border-borderColor1/50 justify-between p-4">

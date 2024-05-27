@@ -26,7 +26,7 @@ const RightSideBar = () => {
                 />
             </div>
             <div className="w-full flex-1 overflow-y-auto">
-                <Accordion variant="light" defaultExpandedKeys={["0"]}>
+                <Accordion variant="light" defaultExpandedKeys={["0"]} showDivider={false}>
                     {
                         RightSideBarUtils.map((item, index) => (
                             <AccordionItem
