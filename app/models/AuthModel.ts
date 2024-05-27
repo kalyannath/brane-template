@@ -22,3 +22,11 @@ export const UserLoginModel: UserLoginModelType = {
     username: "",
     password: ""
 }
+
+export type PasswordResetModelType = {
+    email: string,
+}
+
+export const PasswordResetModel: PasswordResetModelType = {
+    email: "",
+}

@@ -4,17 +4,15 @@ import { Button, Divider } from "@nextui-org/react";
 import TypeInput from "../formUtils/typeInput";
 import { UserLoginModelType } from "../models/AuthModel";
 import { SubmitHandler, useForm } from "react-hook-form";
-import { UserLoginFormValidations } from "./services/LoginFormValidations";
 import { BraneLogo } from "../icons/braneLogo";
 import { BraneLogoText } from "../icons/braneLogoText";
 import Link from "next/link";
 import { HiOutlineMail } from "react-icons/hi";
-import { MdLockOutline } from "react-icons/md";
-import TypePassword from "../formUtils/typePassword";
 import { useRouter } from "next/navigation";
 import { useDispatch } from "react-redux";
 import { AppDispatch } from "../redux/store";
 import { login } from "../redux/features/auth-slice";
+import { PasswordResetFormValidations } from "./services/passwordResetValidations";
 
 const Login = () => {
 
@@ -32,8 +30,6 @@ const Login = () => {
 
     const onSubmit: SubmitHandler<UserLoginModelType> = (data) => {
         console.log("form data::::::::", data);
-        router.push("/dashboard")
-        dispatch(login())
     }
 
     return (
@@ -52,31 +48,21 @@ const Login = () => {
                 <Divider />
                 <div className="flex flex-col gap-4">
                     <TypeInput
-                        name="username"
+                        name="email"
                         control={control}
-                        rules={UserLoginFormValidations.username}
+                        rules={PasswordResetFormValidations.email}
                         label="Email"
                         type="email"
                         required={true}
                         startContent={<HiOutlineMail size={20}/>}
                         size="lg"
                     />
-                    <TypePassword
-                        name="password"
-                        control={control}
-                        rules={UserLoginFormValidations.password}
-                        label="Password"
-                        required={true}
-                        startContent={<MdLockOutline size={20}/>}
-                        size="lg"
-                    />
                 </div>
                 <div className="flex flex-col gap-4 items-space justify-between items-center">
                     <Button type="submit" color="primary" variant="solid" onClick={handleSubmit(onSubmit)}>
-                        Login
+                        Reset
                     </Button>
-                    <Link href="/resetpassword" className="text-sm text-blue-500">Forgot password? Reset here.</Link>
-                    <Link href="/signup" className="text-sm text-blue-500">Don't have account? Register here.</Link>
+                    <Link href="/login" className="text-sm text-blue-500">Go to login.</Link>
                 </div>
             </form>
         </div>
