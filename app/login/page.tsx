@@ -36,7 +36,7 @@ const Login = () => {
         console.log("form data::::::::", data);
         router.push("/dashboard");
         dispatch(login());
-        toast.custom((t) => (<ToastMessage message="Logged in successfully." t={t} canDismiss={false}/>));
+        toast.custom((t) => (<ToastMessage message="Logged in successfully." t={t} />));
     }
 
     return (

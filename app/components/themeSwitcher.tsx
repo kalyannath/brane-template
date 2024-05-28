@@ -18,7 +18,7 @@ export function ThemeSwitcher() {
 
   return (
     <div className="flex gap-5">
-      <Button className="text-foreground" variant="light" isIconOnly onClick={() => setTheme(theme === 'light' ? "purple-dark" : "light")}>
+      <Button className="text-foreground" variant="light" isIconOnly onPress={() => setTheme(theme === 'light' ? "purple-dark" : "light")}>
         {theme === 'light' ? <CiDark size={25} /> : <LuSunDim size={25} /> }
       </Button>
     </div>

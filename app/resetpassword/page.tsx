@@ -58,7 +58,7 @@ const Login = () => {
                     <Button type="submit" color="primary" variant="solid" onClick={handleSubmit(onSubmit)}>
                         Reset
                     </Button>
-                    <Link href="/login" className="text-sm text-blue-500">Go to login.</Link>
+                    <Link href="/login" className="text-sm text-blue-500">Go back to login</Link>
                 </div>
             </form>
         </div>

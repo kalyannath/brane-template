@@ -21,7 +21,7 @@ const AppNavBar = () => {
 
     const onLogout = () => {
         dispatch(logout());
-        toast.custom((t) => (<ToastMessage message="Logged out successfully." t={t} canDismiss={false}/>));
+        toast.custom((t) => (<ToastMessage message="Logged out successfully." t={t} />));
     }
 
     return (
@@ -30,7 +30,7 @@ const AppNavBar = () => {
             maxWidth={'full'}
         >
             {authState && <NavbarContent justify="center" className="sm:hidden">
-                <Button className="text-foreground" variant="light" isIconOnly onClick={() => { dispatch(toggle()); }} >
+                <Button className="text-foreground" variant="light" isIconOnly onPress={() => { dispatch(toggle()); }} >
                     {!drawerState ? <CiMenuBurger size={25} /> : <TfiClose size={20} />}
                 </Button>
             </NavbarContent>}

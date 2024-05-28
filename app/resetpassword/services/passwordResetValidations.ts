@@ -1,8 +1,8 @@
 export const PasswordResetFormValidations = {
     email: {
-        required: "Required",
+        required: process.env.NEXT_PUBLIC_REQUIRED_MSG,
         pattern: {
-            value: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
+            value: new RegExp(process.env.NEXT_PUBLIC_EMAIL_VALIDATION_PATTERN as string),
             message: "Invalid email address"
         }
     },
