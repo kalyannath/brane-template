@@ -15,6 +15,8 @@ import { useRouter } from "next/navigation";
 import { useDispatch } from "react-redux";
 import { AppDispatch } from "../redux/store";
 import { login } from "../redux/features/auth-slice";
+import toast from "react-hot-toast";
+import ToastMessage from "../components/toastMessage";
 
 const Login = () => {
 
@@ -32,8 +34,9 @@ const Login = () => {
 
     const onSubmit: SubmitHandler<UserLoginModelType> = (data) => {
         console.log("form data::::::::", data);
-        router.push("/dashboard")
-        dispatch(login())
+        router.push("/dashboard");
+        dispatch(login());
+        toast.custom((t) => (<ToastMessage message="Logged in successfully." t={t} canDismiss={false}/>));
     }
 
     return (
@@ -58,7 +61,7 @@ const Login = () => {
                         label="Email"
                         type="email"
                         required={true}
-                        startContent={<HiOutlineMail size={20}/>}
+                        startContent={<HiOutlineMail size={20} />}
                         size="lg"
                     />
                     <TypePassword
@@ -67,7 +70,7 @@ const Login = () => {
                         rules={UserLoginFormValidations.password}
                         label="Password"
                         required={true}
-                        startContent={<MdLockOutline size={20}/>}
+                        startContent={<MdLockOutline size={20} />}
                         size="lg"
                     />
                 </div>

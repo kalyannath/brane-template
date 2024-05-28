@@ -11,6 +11,9 @@ import { UserRegistrationFormValidations } from "./service/RegistrationFormValid
 import { HiOutlineMail } from "react-icons/hi";
 import TypePassword from "../formUtils/typePassword";
 import { MdLockOutline } from "react-icons/md";
+import toast from "react-hot-toast";
+import ToastMessage from "../components/toastMessage";
+import { TiTick } from "react-icons/ti";
 
 const SignUp = () => {
 
@@ -23,7 +26,17 @@ const SignUp = () => {
         setValue,
     } = useForm<UserRegistrationModelType>();
 
-    const onSubmit: SubmitHandler<UserRegistrationModelType> = (data) => console.log(data)
+    const onSubmit: SubmitHandler<UserRegistrationModelType> = (data) => {
+        console.log(data);
+        toast.custom((t) => (
+            <ToastMessage message={
+                <div className="flex items-center gap-2 justify-center">
+                    <TiTick size={25} color="green"/>
+                    <p>Registered successfully. Check your inbox for verification email.</p>
+                </div>
+            } t={t} />
+        ))
+    }
     return (
         <div className="flex flex-col w-full h-full md:flex-row p-10 gap-10">
             <div className="hidden md:flex justify-center items-center flex-1">
@@ -88,7 +101,7 @@ const SignUp = () => {
                         rules={UserRegistrationFormValidations.password}
                         label="Password"
                         required={true}
-                        startContent={<MdLockOutline size={20}/>}
+                        startContent={<MdLockOutline size={20} />}
                         size="md"
                     />
                     <div className="flex flex-wrap gap-4 items-space justify-between items-center">

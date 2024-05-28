@@ -8,16 +8,11 @@ import { BraneLogo } from "../icons/braneLogo";
 import { BraneLogoText } from "../icons/braneLogoText";
 import Link from "next/link";
 import { HiOutlineMail } from "react-icons/hi";
-import { useRouter } from "next/navigation";
-import { useDispatch } from "react-redux";
-import { AppDispatch } from "../redux/store";
-import { login } from "../redux/features/auth-slice";
 import { PasswordResetFormValidations } from "./services/passwordResetValidations";
+import toast from 'react-hot-toast';
+import ToastMessage from "../components/toastMessage";
 
 const Login = () => {
-
-    const router = useRouter();
-    const dispatch = useDispatch<AppDispatch>();
 
     const {
         control,
@@ -30,6 +25,7 @@ const Login = () => {
 
     const onSubmit: SubmitHandler<UserLoginModelType> = (data) => {
         console.log("form data::::::::", data);
+        toast.custom((t) => (<ToastMessage message="Password reset link sent successfully." t={t} />));
     }
 
     return (
@@ -54,7 +50,7 @@ const Login = () => {
                         label="Email"
                         type="email"
                         required={true}
-                        startContent={<HiOutlineMail size={20}/>}
+                        startContent={<HiOutlineMail size={20} />}
                         size="lg"
                     />
                 </div>

@@ -11,11 +11,18 @@ import { AppDispatch, RootState } from "../redux/store";
 import { useDispatch, useSelector } from "react-redux";
 import { toggle } from "../redux/features/sidedrawer-state-slice";
 import { logout } from "../redux/features/auth-slice";
+import toast from "react-hot-toast";
+import ToastMessage from "./toastMessage";
 
 const AppNavBar = () => {
     const drawerState = useSelector((state: RootState) => state.sideDrawerReducer.isOpen);
     const dispatch = useDispatch<AppDispatch>();
     const authState = useSelector((state: RootState) => state.authReducer.isLoggedIn);
+
+    const onLogout = () => {
+        dispatch(logout());
+        toast.custom((t) => (<ToastMessage message="Logged out successfully." t={t} canDismiss={false}/>));
+    }
 
     return (
         <Navbar
@@ -69,7 +76,7 @@ const AppNavBar = () => {
                         <DropdownItem key="system">System</DropdownItem>
                         <DropdownItem key="configurations">Configurations</DropdownItem>
                         <DropdownItem key="help_and_feedback">Help & Feedback</DropdownItem>
-                        <DropdownItem key="logout" color="danger" onPress={() => { dispatch(logout()); }}>
+                        <DropdownItem key="logout" color="danger" onPress={onLogout}>
                             Log Out
                         </DropdownItem>
                     </DropdownMenu>
