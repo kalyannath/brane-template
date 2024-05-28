@@ -16,7 +16,6 @@ const Sidebar = () => {
     const [drawerBackground, setDrawerBackground] = useState<string>("");
 
     useEffect(() => {
-        console.log("drawer open state", drawerState);
         setTimeout(() => {
             if (drawerState) {
                 setDrawerBackground("bg-black/50");
@@ -28,7 +27,6 @@ const Sidebar = () => {
 
     useEffect(() => {
         const { innerWidth: width, innerHeight: height } = window;
-        console.log(width, height);
         if (width <= 640) { // for sm screen size
             dispatch(toggle());
         }

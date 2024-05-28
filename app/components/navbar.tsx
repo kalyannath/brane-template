@@ -17,7 +17,7 @@ import ToastMessage from "./toastMessage";
 const AppNavBar = () => {
     const drawerState = useSelector((state: RootState) => state.sideDrawerReducer.isOpen);
     const dispatch = useDispatch<AppDispatch>();
-    const authState = useSelector((state: RootState) => state.authReducer.isLoggedIn);
+    const authState = useSelector((state: RootState) => state.authReducer);
 
     const onLogout = () => {
         dispatch(logout());
@@ -29,7 +29,7 @@ const AppNavBar = () => {
             isBordered
             maxWidth={'full'}
         >
-            {authState && <NavbarContent justify="center" className="sm:hidden">
+            {authState.access_token && <NavbarContent justify="center" className="sm:hidden">
                 <Button className="text-foreground" variant="light" isIconOnly onPress={() => { dispatch(toggle()); }} >
                     {!drawerState ? <CiMenuBurger size={25} /> : <TfiClose size={20} />}
                 </Button>
@@ -50,7 +50,7 @@ const AppNavBar = () => {
             </NavbarContent>
 
             <NavbarContent as="div" justify="end">
-                {authState && <Dropdown placement="bottom-end">
+                {authState.access_token && <Dropdown placement="bottom-end">
                     <DropdownTrigger>
                         <div className="flex items-center gap-1 bg-foreground text-background p-1 rounded-full cursor-pointer">
                             <Avatar

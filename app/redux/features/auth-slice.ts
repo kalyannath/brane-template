@@ -1,24 +1,23 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { PayloadAction, createSlice } from "@reduxjs/toolkit";
+import Cookies from 'js-cookie';
 
 type AuthState = {
-  isLoggedIn: boolean;
+  access_token: string;
 };
 
 const initialState: AuthState = {
-  isLoggedIn: true,
+  access_token: Cookies.get('access_token') ?? "",
 };
 
 export const authStateToggle = createSlice({
   name: "authState",
   initialState,
   reducers: {
-    login: (state) => {
-      console.log("auth state:::", state.isLoggedIn);
-      state.isLoggedIn = true;
+    login: (state, action: PayloadAction<AuthState>) => {
+      return {access_token: action.payload.access_token};
     },
     logout: (state) => {
-      console.log("auth state:::", state.isLoggedIn);
-      state.isLoggedIn = false;
+      return { access_token: "" };
     },
   },
 });

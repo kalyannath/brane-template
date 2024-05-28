@@ -9,11 +9,11 @@ import { useRouter } from "next/navigation";
 import { useEffect } from "react";
 
 const Dashboard = () => {
-    const authState = useSelector((state: RootState) => state.authReducer.isLoggedIn);
+    const authState = useSelector((state: RootState) => state.authReducer);
     const router = useRouter()
 
     useEffect(() => {
-        if (!authState) {
+        if (!authState.access_token) {
             router.push("/login");
         }
     }, [authState])

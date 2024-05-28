@@ -15,8 +15,10 @@ import { useRouter } from "next/navigation";
 import { useDispatch } from "react-redux";
 import { AppDispatch } from "../redux/store";
 import { login } from "../redux/features/auth-slice";
+import Cookies from 'js-cookie';
 import toast from "react-hot-toast";
 import ToastMessage from "../components/toastMessage";
+import HTTP from "../utils/http";
 
 const Login = () => {
 
@@ -28,15 +30,27 @@ const Login = () => {
         handleSubmit,
         reset,
         register,
+        formState: { isValid },
         watch,
         setValue,
     } = useForm<UserLoginModelType>();
 
-    const onSubmit: SubmitHandler<UserLoginModelType> = (data) => {
-        console.log("form data::::::::", data);
-        router.push("/dashboard");
-        dispatch(login());
-        toast.custom((t) => (<ToastMessage message="Logged in successfully." t={t} />));
+    const onSubmit: SubmitHandler<UserLoginModelType> = async (data) => {
+        const formData = new URLSearchParams();
+        formData.append("username", data.username);
+        formData.append("password", data.password);
+        HTTP.Post(`${process.env.NEXT_PUBLIC_API_URL as string}/auth/login`, formData, "include").then( async (resp) => {
+            const response = await resp.json();
+            if (resp.ok) {
+                toast.custom((t) => (<ToastMessage message="Logged in successfully." t={t} />));
+                dispatch(login({access_token: response.access_token}));
+                router.push("/dashboard");
+            } else {
+                toast.custom((t) => (<ToastMessage toastType="error" message={response.detail || "Cannot login."} t={t} />));
+            }
+        }).catch((error) => {
+            toast.custom((t) => (<ToastMessage toastType="error" message={error.message} t={t} />));
+        })
     }
 
     return (
@@ -75,11 +89,11 @@ const Login = () => {
                     />
                 </div>
                 <div className="flex flex-col gap-4 items-space justify-between items-center">
-                    <Button type="submit" color="primary" variant="solid" onClick={handleSubmit(onSubmit)}>
+                    <Button type="submit" color="primary" variant="solid" onClick={handleSubmit(onSubmit)} isDisabled={!isValid}>
                         Login
                     </Button>
-                    <Link href="/resetpassword" className="text-sm text-blue-500">Forgot password? Reset here.</Link>
-                    <Link href="/signup" className="text-sm text-blue-500">Don't have account? Register here.</Link>
+                    <Link href="/resetpassword" className="text-sm text-blue-500 hover:text-blue-700">Forgot password? Reset here.</Link>
+                    <Link href="/signup" className="text-sm text-blue-500 hover:text-blue-700">Don't have account? Register here.</Link>
                 </div>
             </form>
         </div>

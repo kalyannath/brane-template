@@ -9,7 +9,6 @@ const RightSideBar = () => {
     const [accordionItemIdx, setAccordionItemIdx] = useState<number | null>(0);
 
     const handleAccordionItemClick = (itemIdx: number) => {
-        console.log(itemIdx);
         setAccordionItemIdx(itemIdx === accordionItemIdx ? null : itemIdx);
     }
     return (
