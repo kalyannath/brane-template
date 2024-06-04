@@ -1,12 +1,15 @@
-const Post = async (url: string, requestPayload: any, credentials: RequestCredentials = "same-origin") => {
-    return fetch( url, {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/x-www-form-urlencoded'
-        },
-        credentials: credentials, // Important to include credentials
-        body: requestPayload
-    });
+import axios from "axios";
+
+const Post = (url: string, requestPayload: any, credentials: boolean = false) => {
+
+    return axios
+        .post(url, requestPayload, {
+            withCredentials: credentials,
+            headers: {
+                "Content-Type": "application/x-www-form-urlencoded",
+            },
+        })
+
 }
 
 const HTTP = { Post };

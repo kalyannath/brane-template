@@ -8,7 +8,7 @@ export const ToastMessage = ({ toastType = "success", message, t, canDismiss = t
     return (
         <div
             className={`${t.visible ? 'animate-enter' : 'animate-leave'
-                } bg-${toastType === "error" ? "rose-900" : "foreground"} text-sideBarIconsColor shadow-lg flex justify-center items-center p-2 rounded-lg border-[0.5px] border-borderColor1/50 text-sm gap-4`}
+                } ${toastType === "success" ? "bg-foreground" : "bg-rose-900"} text-sideBarIconsColor shadow-lg flex justify-center items-center p-2 rounded-lg border-[0.5px] border-borderColor1/50 text-sm gap-4`}
         >
             <div className="px-2">
                 {message}

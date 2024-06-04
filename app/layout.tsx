@@ -1,14 +1,11 @@
 
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
 import "./globals.css";
 import AppNavBar from "./components/navbar";
 import { NextUIProv } from "./providers/NextUIProv";
 import ReduxProvider from "./redux/reduxProvider";
 import MainBody from "./components/mainBody";
 import { Toaster } from 'react-hot-toast';
-
-const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -23,7 +20,10 @@ export default function RootLayout({
 
   return (
     <html lang="en">
-      <body className={`${inter.className} text-foreground bg-background border-box transition-all duration-[500ms]`}>
+      <head>
+        <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet" />
+      </head>
+      <body className={`font-sans text-foreground bg-background border-box transition-all duration-[500ms]`}>
         <NextUIProv>
           <ReduxProvider>
             <Toaster />

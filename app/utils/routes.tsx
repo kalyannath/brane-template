@@ -10,12 +10,12 @@ export const Routes1 = [
         name: "Home"
     },
     {
-        route: "/route1",
+        route: "/dashboard/route1",
         icon: <HiOutlineRectangleStack size={25} />,
         name: "Route 1"
     },
     {
-        route: "/route2",
+        route: "/dashboard/route2",
         icon: <HiOutlineWrench size={25} />,
         name: "Route 2"
     },

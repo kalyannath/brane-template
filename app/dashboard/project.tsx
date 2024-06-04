@@ -5,7 +5,7 @@ import { LuMoveUpRight } from "react-icons/lu";
 
 const Project = ({ ...props }) => {
   return (
-    <div className="min-w-fit flex flex-col px-2 py-2 pt-4 bg-cardBodyBackground text-contentIconsColor rounded-xl items-center justify-between gap-2">
+    <div className="max-w-fit flex flex-col px-2 py-2 pt-4 bg-cardBodyBackground text-contentIconsColor rounded-xl items-center justify-between gap-2">
       <Image
         className="w-20 md:w-28 lg:w-36"
         alt="NextUI hero Image"

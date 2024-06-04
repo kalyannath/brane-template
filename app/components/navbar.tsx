@@ -10,9 +10,10 @@ import { TfiClose } from "react-icons/tfi";
 import { AppDispatch, RootState } from "../redux/store";
 import { useDispatch, useSelector } from "react-redux";
 import { toggle } from "../redux/features/sidedrawer-state-slice";
-import { logout } from "../redux/features/auth-slice";
+import { setTokenFromCookie } from "../redux/features/auth-slice";
 import toast from "react-hot-toast";
 import ToastMessage from "./toastMessage";
+import Cookies from "js-cookie";
 
 const AppNavBar = () => {
     const drawerState = useSelector((state: RootState) => state.sideDrawerReducer.isOpen);
@@ -20,7 +21,9 @@ const AppNavBar = () => {
     const authState = useSelector((state: RootState) => state.authReducer);
 
     const onLogout = () => {
-        dispatch(logout());
+        dispatch(setTokenFromCookie({access_token: ""}));
+        Cookies.remove('access_token');
+        Cookies.remove('refresh_token');
         toast.custom((t) => (<ToastMessage message="Logged out successfully." t={t} />));
     }
 

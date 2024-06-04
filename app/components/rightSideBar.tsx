@@ -4,17 +4,21 @@ import { useState } from "react";
 import { Accordion, AccordionItem, Image, Input } from "@nextui-org/react";
 import { IoSearchOutline } from "react-icons/io5";
 import { RightSideBarUtils } from "../utils/rightSideBardData";
+import { useSelector } from "react-redux";
+import { RootState } from "../redux/store";
 
 const RightSideBar = () => {
-    const [accordionItemIdx, setAccordionItemIdx] = useState<number | null>(0);
+    const [accordionItemIdx, setAccordionItemIdx] = useState<number | null>(null);
+    const teamState = useSelector((state: RootState) => state.TeamsStateReducer);
 
     const handleAccordionItemClick = (itemIdx: number) => {
         setAccordionItemIdx(itemIdx === accordionItemIdx ? null : itemIdx);
     }
+
     return (
         <div className="mt-4 xl:mt-0 flex flex-col gap-4 w-full xl:w-4/12 h-full rounded-lg border-[0.5px] border-borderColor1/50 py-6 px-4 bg-background2">
             <div className="w-full flex justify-between items-center gap-5">
-                <div className="min-w-fit text-cardHeadingColor text-xs md:text-sm lg:text-md font-bold">Autonomy Engineers</div>
+                <div className="min-w-fit text-cardHeadingColor text-xs md:text-sm lg:text-md font-bold">{teamState.teamName}</div>
                 <Input
                     isClearable
                     type="text"
@@ -25,7 +29,7 @@ const RightSideBar = () => {
                 />
             </div>
             <div className="w-full flex-1 overflow-y-auto">
-                <Accordion variant="light" defaultExpandedKeys={["0"]} showDivider={false}>
+                <Accordion variant="light" showDivider={false}>
                     {
                         RightSideBarUtils.map((item, index) => (
                             <AccordionItem
@@ -38,7 +42,7 @@ const RightSideBar = () => {
                                     <div className={`text-titleColor text-xs sm:text-sm flex gap-4 items-center ${accordionItemIdx === index ? "flex-col justify-center" : ""}`}
                                     >
                                         <Image
-                                            className={`w-${accordionItemIdx === index ? "16" : "12"} rounded-full`}
+                                            className={`w-${accordionItemIdx === index ? "18" : "12"} rounded-full`}
                                             src={item.picUrl}
                                         />
                                         <div className={`flex flex-col ${accordionItemIdx === index ? "items-center" : ""}`}>

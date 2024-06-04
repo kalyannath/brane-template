@@ -27,7 +27,6 @@ const SignUp = () => {
     } = useForm<UserRegistrationModelType>();
 
     const onSubmit: SubmitHandler<UserRegistrationModelType> = (data) => {
-        console.log(data);
         toast.custom((t) => (
             <ToastMessage message={
                 <div className="flex items-center gap-2 justify-center">

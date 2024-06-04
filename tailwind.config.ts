@@ -15,6 +15,9 @@ const config: Config = {
         "gradient-conic":
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
       },
+      fontFamily: {
+        sans: ['Open Sans', 'sans-serif'],
+      }
     },
   },
   darkMode: "class",
@@ -37,7 +40,6 @@ const config: Config = {
             labelColor: "#A270F2",
             cardHeadingColor: "#BD98F9",
             cardBodyBackground: "#7738DD",
-
           },
         },
 
@@ -57,7 +59,6 @@ const config: Config = {
             labelColor: "#AC95D1",
             cardHeadingColor: "#7738DD",
             cardBodyBackground: "#DBC5FD",
-
           },
         },
       },

@@ -1,35 +1,59 @@
 'use client'
 
-import { useSelector } from "react-redux";
 import ActiveProjects from "./activeProjects";
 import CompanyDetails from "./companyDetails";
 import Teams from "./teams";
-import { RootState } from "../redux/store";
-import { useRouter } from "next/navigation";
 import { useEffect } from "react";
+import CompanyDetailsSkeleton from "../components/skeletons/companyDetailsSkeleton";
+import ActiveProjectsSkeleton from "../components/skeletons/activeProjectsSkeleton";
+import TeamsSkeleton from "../components/skeletons/teamsSkeleton";
+import { useDispatch, useSelector } from "react-redux";
+import { AppDispatch, RootState } from "../redux/store";
+import { toggleActiveProjectsSkeleton, toggleCompanyDetailsSkeleton, toggleTeamsSkeleton } from "../redux/features/skeleton-slice";
 
 const Dashboard = () => {
-    const authState = useSelector((state: RootState) => state.authReducer);
-    const router = useRouter()
+    const dispatch = useDispatch<AppDispatch>();
+    const skeletonState = useSelector((state: RootState) => state.skeletonStateReducer);
+
+    const apiCallCompanyDetails = () => {
+        dispatch(toggleCompanyDetailsSkeleton(true));
+        setTimeout(() => {
+            dispatch(toggleCompanyDetailsSkeleton(false));
+        }, 1000)
+    }
+
+    const apiCallActiveProjects = () => {
+        dispatch(toggleActiveProjectsSkeleton(true));
+        setTimeout(() => {
+            dispatch(toggleActiveProjectsSkeleton(false));
+        }, 2000)
+    }
+
+    const apiCallTeams = () => {
+        dispatch(toggleTeamsSkeleton(true));
+        setTimeout(() => {
+            dispatch(toggleTeamsSkeleton(false));
+        }, 3000)
+    }
 
     useEffect(() => {
-        if (!authState.access_token) {
-            router.push("/login");
-        }
-    }, [authState])
+        apiCallCompanyDetails();
+        apiCallActiveProjects();
+        apiCallTeams();
+    }, [])
 
     return (
-        <div className="w-full flex flex-col gap-6">
-            <div className="w-full flex gap-5 flex-col lg:flex-row">
+        <div className="w-full flex flex-col gap-2">
+            <div className="w-full flex gap-2 flex-col lg:flex-row">
                 <div className="w-full lg:w-6/12">
-                    <CompanyDetails />
+                    {skeletonState.companyDetailsSkeleton ? <CompanyDetailsSkeleton /> : <CompanyDetails />}
                 </div>
                 <div className="w-full lg:w-6/12">
-                    <ActiveProjects />
+                    {skeletonState.activeProjectsSkeleton ? <ActiveProjectsSkeleton /> : <ActiveProjects />}
                 </div>
             </div>
             <div className="w-full">
-                <Teams />
+                {skeletonState.teamsSkeleton ? <TeamsSkeleton /> : <Teams />}
             </div>
         </div>
     )

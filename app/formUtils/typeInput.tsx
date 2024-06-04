@@ -14,6 +14,7 @@ type ControlledInputProps = {
     startContent?: ReactNode,
     endContent?: ReactNode,
     size?: "sm" | "md" | "lg" | undefined,
+    disabled?: boolean,
 }
 
 const TypeInput = ({...props }: ControlledInputProps) => {
@@ -43,6 +44,7 @@ const TypeInput = ({...props }: ControlledInputProps) => {
                         onChange("");
                     }}
                     size={props.size || "md"}
+                    isDisabled={props.disabled || false}
                 />
             }
         />

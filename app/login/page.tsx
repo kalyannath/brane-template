@@ -14,7 +14,7 @@ import TypePassword from "../formUtils/typePassword";
 import { useRouter } from "next/navigation";
 import { useDispatch } from "react-redux";
 import { AppDispatch } from "../redux/store";
-import { login } from "../redux/features/auth-slice";
+import { setTokenFromCookie } from "../redux/features/auth-slice";
 import Cookies from 'js-cookie';
 import toast from "react-hot-toast";
 import ToastMessage from "../components/toastMessage";
@@ -36,26 +36,34 @@ const Login = () => {
     } = useForm<UserLoginModelType>();
 
     const onSubmit: SubmitHandler<UserLoginModelType> = async (data) => {
+        toast.remove(); // remove all previous toast messages
         const formData = new URLSearchParams();
         formData.append("username", data.username);
         formData.append("password", data.password);
-        HTTP.Post(`${process.env.NEXT_PUBLIC_API_URL as string}/auth/login`, formData, "include").then( async (resp) => {
-            const response = await resp.json();
-            if (resp.ok) {
-                toast.custom((t) => (<ToastMessage message="Logged in successfully." t={t} />));
-                dispatch(login({access_token: response.access_token}));
+        HTTP.Post(`${process.env.NEXT_PUBLIC_API_URL as string}/auth/login`, formData, true).then(async (resp) => {
+            console.log(resp);
+            const responseData = resp.data;
+            console.log(responseData);
+            if (resp) {
                 router.push("/dashboard");
+                setTimeout(() => {
+                    const cookie = Cookies.get("access_token");
+                    dispatch(setTokenFromCookie({ access_token: cookie || "" }));
+                }, 500)
+                toast.custom((t) => (<ToastMessage message="Logged in successfully." t={t} />));
             } else {
-                toast.custom((t) => (<ToastMessage toastType="error" message={response.detail || "Cannot login."} t={t} />));
+                toast.custom((t) => (<ToastMessage toastType="error" message={responseData.detail || "Cannot login."} t={t} />));
             }
         }).catch((error) => {
-            toast.custom((t) => (<ToastMessage toastType="error" message={error.message} t={t} />));
+            console.log("error::::::::", error);
+            const errorResp = error.response.data;
+            toast.custom((t) => (<ToastMessage toastType="error" message={errorResp.detail || error.message} t={t} />));
         })
     }
 
     return (
-        <div className="w-full h-full flex justify-center items-center">
-            <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-6 rounded-lg border-[0.5px] border-borderColor1/50 p-8">
+        <div className="w-full h-full flex justify-center items-center overflow-y-auto">
+            <form onSubmit={handleSubmit(onSubmit)} className="max-h-full flex flex-col gap-6 rounded-lg border-[0.5px] border-borderColor1/50 p-8 overflow-y-auto">
                 <div className="flex justify-between items-center">
                     <div className="flex justify-center items-center gap-4">
                         <BraneLogo width={25} height={25} />
@@ -72,8 +80,8 @@ const Login = () => {
                         name="username"
                         control={control}
                         rules={UserLoginFormValidations.username}
-                        label="Email"
-                        type="email"
+                        label="Username"
+                        type="text"
                         required={true}
                         startContent={<HiOutlineMail size={20} />}
                         size="lg"
@@ -89,7 +97,7 @@ const Login = () => {
                     />
                 </div>
                 <div className="flex flex-col gap-4 items-space justify-between items-center">
-                    <Button type="submit" color="primary" variant="solid" onClick={handleSubmit(onSubmit)} isDisabled={!isValid}>
+                    <Button type="submit" color="primary" variant="solid" onClick={handleSubmit(onSubmit)} >
                         Login
                     </Button>
                     <Link href="/resetpassword" className="text-sm text-blue-500 hover:text-blue-700">Forgot password? Reset here.</Link>
